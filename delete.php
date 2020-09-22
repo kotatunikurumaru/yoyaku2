@@ -22,8 +22,8 @@ if (isset($_SESSION['id'])) {
     date_default_timezone_set('Asia/Tokyo');
 
     $header = "MIME-Version: 1.0\n";
-    $header .= "From: 鈴木匠 <takumi.suzuki0411@gmail.com>\n";
-    $header .= "Reply-To: 鈴木匠 <takumi.suzuki0411@gmail.com>\n";
+    $header .= "From: テスト <test@test>\n";
+    $header .= "Reply-To: テスト <test@test>\n";
 
     // 件名を設定
     $auto_reply_subject = 'ご予約のキャンセルを承りました。';
