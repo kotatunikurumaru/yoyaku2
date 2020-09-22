@@ -7,7 +7,6 @@
 # デモ
 画像
 <img src="https://user-images.githubusercontent.com/61407102/93898075-c9402000-fd2d-11ea-8391-cd84bb7ae7d2.gif" width="320px">
-![予約画面](https://user-images.githubusercontent.com/61407102/93898075-c9402000-fd2d-11ea-8391-cd84bb7ae7d2.gif)
 
 動画
 https://gyazo.com/cfac82463b061172c390492cdd67105d
