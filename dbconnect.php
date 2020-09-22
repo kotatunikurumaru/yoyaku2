@@ -1,6 +1,5 @@
 <?php
 try {
-  function dbConnect(){
     $db = parse_url($_SERVER['CLEARDB_DATABASE_URL']);
     $db['dbname'] = ltrim($db['path'], '/');
     $dsn = "mysql:host={$db['host']};dbname={$db['dbname']};charset=utf8";
@@ -11,9 +10,8 @@ try {
       PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
       PDO::MYSQL_ATTR_USE_BUFFERED_QUERY =>true,
     );
-    $dbh = new PDO($dsn,$user,$password);
+    $dbh = new PDO($dsn,$user,$password,$options);
     return $dbh;
-  }
 } catch(PDOException $e) {
   print('DB接続エラー: ' . $e->getMessage());
 }
