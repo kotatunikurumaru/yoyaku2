@@ -10,7 +10,7 @@ if (!empty($_POST)) {
   $email = $_POST['email'];
   
   if ($_POST['email'] !== '' && $_POST['password'] !== '') {
-    $login = $db->prepare('SELECT * FROM members WHERE email=? AND password=?');
+    $login = $dbh->prepare('SELECT * FROM members WHERE email=? AND password=?');
     $login->execute(array(
       $_POST['email'],
       sha1($_POST['password'])

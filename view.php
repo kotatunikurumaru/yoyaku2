@@ -7,7 +7,7 @@ if (empty($_REQUEST['id'])) {
 	exit();
 }
 
-$posts = $db->prepare('SELECT m.name, p.* FROM members m, masters p WHERE m.id=p.member_id AND p.id=?');
+$posts = $dbh->prepare('SELECT m.name, p.* FROM members m, masters p WHERE m.id=p.member_id AND p.id=?');
 $posts->execute(array($_REQUEST['id']));
 ?>
 

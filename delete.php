@@ -5,13 +5,13 @@ require('dbconnect.php');
 if (isset($_SESSION['id'])) {
   $id = $_REQUEST['id'];
 
-  $messages = $db->prepare('SELECT * FROM masters WHERE id=?');
+  $messages = $dbh->prepare('SELECT * FROM masters WHERE id=?');
   $messages->execute(array($id));
   $message = $messages->fetch();
   
   if ($message['member_id'] == $_SESSION['id']) {
     $member_id = $message['member_id'];
-    $posts = $db->prepare('SELECT * FROM members WHERE id=?');
+    $posts = $dbh->prepare('SELECT * FROM members WHERE id=?');
     $posts->execute(array($member_id));
     $post = $posts->fetch();
 
@@ -39,7 +39,7 @@ if (isset($_SESSION['id'])) {
     $auto_reply_text .= "電話番号:012-3456-7890\n\n";
     $auto_reply_text .= "またのご利用、お待ち申し上げます。";
     mb_send_mail( $post['email'], $auto_reply_subject, $auto_reply_text, $header);
-    $del = $db->prepare('DELETE FROM masters WHERE id=?');
+    $del = $dbh->prepare('DELETE FROM masters WHERE id=?');
     $del->execute(array($id));
   }
 }

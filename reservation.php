@@ -36,7 +36,7 @@
 	if (isset($_SESSION['id']) && $_SESSION['time'] + 3600 > time()) {
 		$_SESSION['time'] = time();
 	
-		$members = $db->prepare('SELECT * FROM members WHERE id=?');
+		$members = $dbh->prepare('SELECT * FROM members WHERE id=?');
 		$members->execute(array($_SESSION['id']));
 		$member = $members->fetch();
 	} else {
@@ -46,7 +46,7 @@
 	
 	if (!empty($_POST)) {
 		if($_POST['day'] !== '') {
-			$message = $db->prepare('INSERT INTO masters SET member_id=?, day=?, time1=?, doctor=?, created=NOW()');
+			$message = $dbh->prepare('INSERT INTO masters SET member_id=?, day=?, time1=?, doctor=?, created=NOW()');
 			$message->execute(array(
 				$member['id'],
 				$_POST['day'],
@@ -56,7 +56,7 @@
 		}
 	}
 	
-	$posts = $db->query('SELECT m.name, p.* FROM members m, masters p WHERE m.id=p.member_id ORDER BY p.day DESC, p.time1 DESC');
+	$posts = $dbh->query('SELECT m.name, p.* FROM members m, masters p WHERE m.id=p.member_id ORDER BY p.day DESC, p.time1 DESC');
 	
 	
 	if(isset($_POST['regist_0900_0_0'])){
@@ -7258,7 +7258,7 @@
 		<?php if ($week_0 == "金") :?>
 			<?php
 				$sql_1 = "SELECT * FROM masters where day = '$ymd_0' AND time1 = '09:00~09:30' AND doctor = 'A医師'";
-				$stmt_1 = $db->query($sql_1);
+				$stmt_1 = $dbh->query($sql_1);
 				$stmt_1->execute();
 				$count_1 = $stmt_1->rowCount();
 			?>
@@ -7275,7 +7275,7 @@
 			<?php endif; ?>
 			<?php
 				$sql_2 = "SELECT * FROM masters where day = '$ymd_0' AND time1 = '09:00~09:30' AND doctor = 'B医師'";
-				$stmt_2 = $db->query($sql_2);
+				$stmt_2 = $dbh->query($sql_2);
 				$stmt_2->execute();
 				$count_2 = $stmt_2->rowCount();
 			?>
@@ -7293,7 +7293,7 @@
 		<?php elseif ($week_0 == "月" OR $week_0 == "火" OR $week_0 == "水" OR $week_0 == "木"): ?>
 			<?php
 				$sql_0 = "SELECT * FROM masters where day = '$ymd_0' AND time1 = '09:00~09:30' AND doctor = 'A医師'";
-				$stmt_0 = $db->query($sql_0);
+				$stmt_0 = $dbh->query($sql_0);
 				$stmt_0->execute();
 				$count_0 = $stmt_0->rowCount();
 			?>
@@ -7316,7 +7316,7 @@
 		<?php if ($week_1 == "金") :?>
 			<?php
 				$sql_1 = "SELECT * FROM masters where day = '$ymd_1' AND time1 = '09:00~09:30' AND doctor = 'A医師'";
-				$stmt_1 = $db->query($sql_1);
+				$stmt_1 = $dbh->query($sql_1);
 				$stmt_1->execute();
 				$count_1 = $stmt_1->rowCount();
 			?>
@@ -7333,7 +7333,7 @@
 			<?php endif; ?>
 			<?php
 				$sql_2 = "SELECT * FROM masters where day = '$ymd_1' AND time1 = '09:00~09:30' AND doctor = 'B医師'";
-				$stmt_2 = $db->query($sql_2);
+				$stmt_2 = $dbh->query($sql_2);
 				$stmt_2->execute();
 				$count_2 = $stmt_2->rowCount();
 			?>
@@ -7351,7 +7351,7 @@
 		<?php elseif ($week_1 == "月" OR $week_1 == "火" OR $week_1 == "水" OR $week_1 == "木"): ?>
 			<?php
 				$sql_0 = "SELECT * FROM masters where day = '$ymd_1' AND time1 = '09:00~09:30' AND doctor = 'A医師'";
-				$stmt_0 = $db->query($sql_0);
+				$stmt_0 = $dbh->query($sql_0);
 				$stmt_0->execute();
 				$count_0 = $stmt_0->rowCount();
 			?>
@@ -7374,7 +7374,7 @@
 		<?php if ($week_2 == "金") :?>
 			<?php
 				$sql_1 = "SELECT * FROM masters where day = '$ymd_2' AND time1 = '09:00~09:30' AND doctor = 'A医師'";
-				$stmt_1 = $db->query($sql_1);
+				$stmt_1 = $dbh->query($sql_1);
 				$stmt_1->execute();
 				$count_1 = $stmt_1->rowCount();
 			?>
@@ -7391,7 +7391,7 @@
 			<?php endif; ?>
 			<?php
 				$sql_2 = "SELECT * FROM masters where day = '$ymd_2' AND time1 = '09:00~09:30' AND doctor = 'B医師'";
-				$stmt_2 = $db->query($sql_2);
+				$stmt_2 = $dbh->query($sql_2);
 				$stmt_2->execute();
 				$count_2 = $stmt_2->rowCount();
 			?>
@@ -7409,7 +7409,7 @@
 		<?php elseif ($week_2 == "月" OR $week_2 == "火" OR $week_2 == "水" OR $week_2 == "木"): ?>
 			<?php
 				$sql_0 = "SELECT * FROM masters where day = '$ymd_2' AND time1 = '09:00~09:30' AND doctor = 'A医師'";
-				$stmt_0 = $db->query($sql_0);
+				$stmt_0 = $dbh->query($sql_0);
 				$stmt_0->execute();
 				$count_0 = $stmt_0->rowCount();
 			?>
@@ -7432,7 +7432,7 @@
 		<?php if ($week_3 == "金") :?>
 			<?php
 				$sql_1 = "SELECT * FROM masters where day = '$ymd_3' AND time1 = '09:00~09:30' AND doctor = 'A医師'";
-				$stmt_1 = $db->query($sql_1);
+				$stmt_1 = $dbh->query($sql_1);
 				$stmt_1->execute();
 				$count_1 = $stmt_1->rowCount();
 			?>
@@ -7449,7 +7449,7 @@
 			<?php endif; ?>
 			<?php
 				$sql_2 = "SELECT * FROM masters where day = '$ymd_3' AND time1 = '09:00~09:30' AND doctor = 'B医師'";
-				$stmt_2 = $db->query($sql_2);
+				$stmt_2 = $dbh->query($sql_2);
 				$stmt_2->execute();
 				$count_2 = $stmt_2->rowCount();
 			?>
@@ -7467,7 +7467,7 @@
 		<?php elseif ($week_3 == "月" OR $week_3 == "火" OR $week_3 == "水" OR $week_3 == "木"): ?>
 			<?php
 				$sql_0 = "SELECT * FROM masters where day = '$ymd_3' AND time1 = '09:00~09:30' AND doctor = 'A医師'";
-				$stmt_0 = $db->query($sql_0);
+				$stmt_0 = $dbh->query($sql_0);
 				$stmt_0->execute();
 				$count_0 = $stmt_0->rowCount();
 			?>
@@ -7490,7 +7490,7 @@
 		<?php if ($week_4 == "金") :?>
 			<?php
 				$sql_1 = "SELECT * FROM masters where day = '$ymd_4' AND time1 = '09:00~09:30' AND doctor = 'A医師'";
-				$stmt_1 = $db->query($sql_1);
+				$stmt_1 = $dbh->query($sql_1);
 				$stmt_1->execute();
 				$count_1 = $stmt_1->rowCount();
 			?>
@@ -7507,7 +7507,7 @@
 			<?php endif; ?>
 			<?php
 				$sql_2 = "SELECT * FROM masters where day = '$ymd_4' AND time1 = '09:00~09:30' AND doctor = 'B医師'";
-				$stmt_2 = $db->query($sql_2);
+				$stmt_2 = $dbh->query($sql_2);
 				$stmt_2->execute();
 				$count_2 = $stmt_2->rowCount();
 			?>
@@ -7525,7 +7525,7 @@
 		<?php elseif ($week_4 == "月" OR $week_4 == "火" OR $week_4 == "水" OR $week_4 == "木"): ?>
 			<?php
 				$sql_0 = "SELECT * FROM masters where day = '$ymd_4' AND time1 = '09:00~09:30' AND doctor = 'A医師'";
-				$stmt_0 = $db->query($sql_0);
+				$stmt_0 = $dbh->query($sql_0);
 				$stmt_0->execute();
 				$count_0 = $stmt_0->rowCount();
 			?>
@@ -7548,7 +7548,7 @@
 		<?php if ($week_5 == "金") :?>
 			<?php
 				$sql_1 = "SELECT * FROM masters where day = '$ymd_5' AND time1 = '09:00~09:30' AND doctor = 'A医師'";
-				$stmt_1 = $db->query($sql_1);
+				$stmt_1 = $dbh->query($sql_1);
 				$stmt_1->execute();
 				$count_1 = $stmt_1->rowCount();
 			?>
@@ -7565,7 +7565,7 @@
 			<?php endif; ?>
 			<?php
 				$sql_2 = "SELECT * FROM masters where day = '$ymd_5' AND time1 = '09:00~09:30' AND doctor = 'B医師'";
-				$stmt_2 = $db->query($sql_2);
+				$stmt_2 = $dbh->query($sql_2);
 				$stmt_2->execute();
 				$count_2 = $stmt_2->rowCount();
 			?>
@@ -7583,7 +7583,7 @@
 		<?php elseif ($week_5 == "月" OR $week_5 == "火" OR $week_5 == "水" OR $week_5 == "木"): ?>
 			<?php
 				$sql_0 = "SELECT * FROM masters where day = '$ymd_5' AND time1 = '09:00~09:30' AND doctor = 'A医師'";
-				$stmt_0 = $db->query($sql_0);
+				$stmt_0 = $dbh->query($sql_0);
 				$stmt_0->execute();
 				$count_0 = $stmt_0->rowCount();
 			?>
@@ -7606,7 +7606,7 @@
 		<?php if ($week_6 == "金") :?>
 			<?php
 				$sql_1 = "SELECT * FROM masters where day = '$ymd_6' AND time1 = '09:00~09:30' AND doctor = 'A医師'";
-				$stmt_1 = $db->query($sql_1);
+				$stmt_1 = $dbh->query($sql_1);
 				$stmt_1->execute();
 				$count_1 = $stmt_1->rowCount();
 			?>
@@ -7623,7 +7623,7 @@
 			<?php endif; ?>
 			<?php
 				$sql_2 = "SELECT * FROM masters where day = '$ymd_6' AND time1 = '09:00~09:30' AND doctor = 'B医師'";
-				$stmt_2 = $db->query($sql_2);
+				$stmt_2 = $dbh->query($sql_2);
 				$stmt_2->execute();
 				$count_2 = $stmt_2->rowCount();
 			?>
@@ -7641,7 +7641,7 @@
 		<?php elseif ($week_6 == "月" OR $week_6 == "火" OR $week_6 == "水" OR $week_6 == "木"): ?>
 			<?php
 				$sql_0 = "SELECT * FROM masters where day = '$ymd_6' AND time1 = '09:00~09:30' AND doctor = 'A医師'";
-				$stmt_0 = $db->query($sql_0);
+				$stmt_0 = $dbh->query($sql_0);
 				$stmt_0->execute();
 				$count_0 = $stmt_0->rowCount();
 			?>
@@ -7664,7 +7664,7 @@
 		<?php if ($week_7 == "金") :?>
 			<?php
 				$sql_1 = "SELECT * FROM masters where day = '$ymd_7' AND time1 = '09:00~09:30' AND doctor = 'A医師'";
-				$stmt_1 = $db->query($sql_1);
+				$stmt_1 = $dbh->query($sql_1);
 				$stmt_1->execute();
 				$count_1 = $stmt_1->rowCount();
 			?>
@@ -7681,7 +7681,7 @@
 			<?php endif; ?>
 			<?php
 				$sql_2 = "SELECT * FROM masters where day = '$ymd_7' AND time1 = '09:00~09:30' AND doctor = 'B医師'";
-				$stmt_2 = $db->query($sql_2);
+				$stmt_2 = $dbh->query($sql_2);
 				$stmt_2->execute();
 				$count_2 = $stmt_2->rowCount();
 			?>
@@ -7699,7 +7699,7 @@
 		<?php elseif ($week_7 == "月" OR $week_7 == "火" OR $week_7 == "水" OR $week_7 == "木"): ?>
 			<?php
 				$sql_0 = "SELECT * FROM masters where day = '$ymd_7' AND time1 = '09:00~09:30' AND doctor = 'A医師'";
-				$stmt_0 = $db->query($sql_0);
+				$stmt_0 = $dbh->query($sql_0);
 				$stmt_0->execute();
 				$count_0 = $stmt_0->rowCount();
 			?>
@@ -7725,7 +7725,7 @@
 		<?php if ($week_0 == "金") :?>
 			<?php
 				$sql_1 = "SELECT * FROM masters where day = '$ymd_0' AND time1 = '09:30~10:00' AND doctor = 'A医師'";
-				$stmt_1 = $db->query($sql_1);
+				$stmt_1 = $dbh->query($sql_1);
 				$stmt_1->execute();
 				$count_1 = $stmt_1->rowCount();
 			?>
@@ -7742,7 +7742,7 @@
 			<?php endif; ?>
 			<?php
 				$sql_2 = "SELECT * FROM masters where day = '$ymd_0' AND time1 = '09:30~10:00' AND doctor = 'B医師'";
-				$stmt_2 = $db->query($sql_2);
+				$stmt_2 = $dbh->query($sql_2);
 				$stmt_2->execute();
 				$count_2 = $stmt_2->rowCount();
 			?>
@@ -7760,7 +7760,7 @@
 		<?php elseif ($week_0 == "月" OR $week_0 == "火" OR $week_0 == "水" OR $week_0 == "木"): ?>
 			<?php
 				$sql_0 = "SELECT * FROM masters where day = '$ymd_0' AND time1 = '09:30~10:00' AND doctor = 'A医師'";
-				$stmt_0 = $db->query($sql_0);
+				$stmt_0 = $dbh->query($sql_0);
 				$stmt_0->execute();
 				$count_0 = $stmt_0->rowCount();
 			?>
@@ -7783,7 +7783,7 @@
 		<?php if ($week_1 == "金") :?>
 			<?php
 				$sql_1 = "SELECT * FROM masters where day = '$ymd_1' AND time1 = '09:30~10:00' AND doctor = 'A医師'";
-				$stmt_1 = $db->query($sql_1);
+				$stmt_1 = $dbh->query($sql_1);
 				$stmt_1->execute();
 				$count_1 = $stmt_1->rowCount();
 			?>
@@ -7800,7 +7800,7 @@
 			<?php endif; ?>
 			<?php
 				$sql_2 = "SELECT * FROM masters where day = '$ymd_1' AND time1 = '09:30~10:00' AND doctor = 'B医師'";
-				$stmt_2 = $db->query($sql_2);
+				$stmt_2 = $dbh->query($sql_2);
 				$stmt_2->execute();
 				$count_2 = $stmt_2->rowCount();
 			?>
@@ -7818,7 +7818,7 @@
 		<?php elseif ($week_1 == "月" OR $week_1 == "火" OR $week_1 == "水" OR $week_1 == "木"): ?>
 			<?php
 				$sql_0 = "SELECT * FROM masters where day = '$ymd_1' AND time1 = '09:30~10:00' AND doctor = 'A医師'";
-				$stmt_0 = $db->query($sql_0);
+				$stmt_0 = $dbh->query($sql_0);
 				$stmt_0->execute();
 				$count_0 = $stmt_0->rowCount();
 			?>
@@ -7841,7 +7841,7 @@
 		<?php if ($week_2 == "金") :?>
 			<?php
 				$sql_1 = "SELECT * FROM masters where day = '$ymd_2' AND time1 = '09:30~10:00' AND doctor = 'A医師'";
-				$stmt_1 = $db->query($sql_1);
+				$stmt_1 = $dbh->query($sql_1);
 				$stmt_1->execute();
 				$count_1 = $stmt_1->rowCount();
 			?>
@@ -7858,7 +7858,7 @@
 			<?php endif; ?>
 			<?php
 				$sql_2 = "SELECT * FROM masters where day = '$ymd_2' AND time1 = '09:30~10:00' AND doctor = 'B医師'";
-				$stmt_2 = $db->query($sql_2);
+				$stmt_2 = $dbh->query($sql_2);
 				$stmt_2->execute();
 				$count_2 = $stmt_2->rowCount();
 			?>
@@ -7876,7 +7876,7 @@
 		<?php elseif ($week_2 == "月" OR $week_2 == "火" OR $week_2 == "水" OR $week_2 == "木"): ?>
 			<?php
 				$sql_0 = "SELECT * FROM masters where day = '$ymd_2' AND time1 = '09:30~10:00' AND doctor = 'A医師'";
-				$stmt_0 = $db->query($sql_0);
+				$stmt_0 = $dbh->query($sql_0);
 				$stmt_0->execute();
 				$count_0 = $stmt_0->rowCount();
 			?>
@@ -7899,7 +7899,7 @@
 		<?php if ($week_3 == "金") :?>
 			<?php
 				$sql_1 = "SELECT * FROM masters where day = '$ymd_3' AND time1 = '09:30~10:00' AND doctor = 'A医師'";
-				$stmt_1 = $db->query($sql_1);
+				$stmt_1 = $dbh->query($sql_1);
 				$stmt_1->execute();
 				$count_1 = $stmt_1->rowCount();
 			?>
@@ -7916,7 +7916,7 @@
 			<?php endif; ?>
 			<?php
 				$sql_2 = "SELECT * FROM masters where day = '$ymd_3' AND time1 = '09:30~10:00' AND doctor = 'B医師'";
-				$stmt_2 = $db->query($sql_2);
+				$stmt_2 = $dbh->query($sql_2);
 				$stmt_2->execute();
 				$count_2 = $stmt_2->rowCount();
 			?>
@@ -7934,7 +7934,7 @@
 		<?php elseif ($week_3 == "月" OR $week_3 == "火" OR $week_3 == "水" OR $week_3 == "木"): ?>
 			<?php
 				$sql_0 = "SELECT * FROM masters where day = '$ymd_3' AND time1 = '09:30~10:00' AND doctor = 'A医師'";
-				$stmt_0 = $db->query($sql_0);
+				$stmt_0 = $dbh->query($sql_0);
 				$stmt_0->execute();
 				$count_0 = $stmt_0->rowCount();
 			?>
@@ -7957,7 +7957,7 @@
 		<?php if ($week_4 == "金") :?>
 			<?php
 				$sql_1 = "SELECT * FROM masters where day = '$ymd_4' AND time1 = '09:30~10:00' AND doctor = 'A医師'";
-				$stmt_1 = $db->query($sql_1);
+				$stmt_1 = $dbh->query($sql_1);
 				$stmt_1->execute();
 				$count_1 = $stmt_1->rowCount();
 			?>
@@ -7974,7 +7974,7 @@
 			<?php endif; ?>
 			<?php
 				$sql_2 = "SELECT * FROM masters where day = '$ymd_4' AND time1 = '09:30~10:00' AND doctor = 'B医師'";
-				$stmt_2 = $db->query($sql_2);
+				$stmt_2 = $dbh->query($sql_2);
 				$stmt_2->execute();
 				$count_2 = $stmt_2->rowCount();
 			?>
@@ -7992,7 +7992,7 @@
 		<?php elseif ($week_4 == "月" OR $week_4 == "火" OR $week_4 == "水" OR $week_4 == "木"): ?>
 			<?php
 				$sql_0 = "SELECT * FROM masters where day = '$ymd_4' AND time1 = '09:30~10:00' AND doctor = 'A医師'";
-				$stmt_0 = $db->query($sql_0);
+				$stmt_0 = $dbh->query($sql_0);
 				$stmt_0->execute();
 				$count_0 = $stmt_0->rowCount();
 			?>
@@ -8015,7 +8015,7 @@
 		<?php if ($week_5 == "金") :?>
 			<?php
 				$sql_1 = "SELECT * FROM masters where day = '$ymd_5' AND time1 = '09:30~10:00' AND doctor = 'A医師'";
-				$stmt_1 = $db->query($sql_1);
+				$stmt_1 = $dbh->query($sql_1);
 				$stmt_1->execute();
 				$count_1 = $stmt_1->rowCount();
 			?>
@@ -8032,7 +8032,7 @@
 			<?php endif; ?>
 			<?php
 				$sql_2 = "SELECT * FROM masters where day = '$ymd_5' AND time1 = '09:30~10:00' AND doctor = 'B医師'";
-				$stmt_2 = $db->query($sql_2);
+				$stmt_2 = $dbh->query($sql_2);
 				$stmt_2->execute();
 				$count_2 = $stmt_2->rowCount();
 			?>
@@ -8050,7 +8050,7 @@
 		<?php elseif ($week_5 == "月" OR $week_5 == "火" OR $week_5 == "水" OR $week_5 == "木"): ?>
 			<?php
 				$sql_0 = "SELECT * FROM masters where day = '$ymd_5' AND time1 = '09:30~10:00' AND doctor = 'A医師'";
-				$stmt_0 = $db->query($sql_0);
+				$stmt_0 = $dbh->query($sql_0);
 				$stmt_0->execute();
 				$count_0 = $stmt_0->rowCount();
 			?>
@@ -8073,7 +8073,7 @@
 		<?php if ($week_6 == "金") :?>
 			<?php
 				$sql_1 = "SELECT * FROM masters where day = '$ymd_6' AND time1 = '09:30~10:00' AND doctor = 'A医師'";
-				$stmt_1 = $db->query($sql_1);
+				$stmt_1 = $dbh->query($sql_1);
 				$stmt_1->execute();
 				$count_1 = $stmt_1->rowCount();
 			?>
@@ -8090,7 +8090,7 @@
 			<?php endif; ?>
 			<?php
 				$sql_2 = "SELECT * FROM masters where day = '$ymd_6' AND time1 = '09:30~10:00' AND doctor = 'B医師'";
-				$stmt_2 = $db->query($sql_2);
+				$stmt_2 = $dbh->query($sql_2);
 				$stmt_2->execute();
 				$count_2 = $stmt_2->rowCount();
 			?>
@@ -8108,7 +8108,7 @@
 		<?php elseif ($week_6 == "月" OR $week_6 == "火" OR $week_6 == "水" OR $week_6 == "木"): ?>
 			<?php
 				$sql_0 = "SELECT * FROM masters where day = '$ymd_6' AND time1 = '09:30~10:00' AND doctor = 'A医師'";
-				$stmt_0 = $db->query($sql_0);
+				$stmt_0 = $dbh->query($sql_0);
 				$stmt_0->execute();
 				$count_0 = $stmt_0->rowCount();
 			?>
@@ -8131,7 +8131,7 @@
 		<?php if ($week_7 == "金") :?>
 			<?php
 				$sql_1 = "SELECT * FROM masters where day = '$ymd_7' AND time1 = '09:30~10:00' AND doctor = 'A医師'";
-				$stmt_1 = $db->query($sql_1);
+				$stmt_1 = $dbh->query($sql_1);
 				$stmt_1->execute();
 				$count_1 = $stmt_1->rowCount();
 			?>
@@ -8148,7 +8148,7 @@
 			<?php endif; ?>
 			<?php
 				$sql_2 = "SELECT * FROM masters where day = '$ymd_7' AND time1 = '09:30~10:00' AND doctor = 'B医師'";
-				$stmt_2 = $db->query($sql_2);
+				$stmt_2 = $dbh->query($sql_2);
 				$stmt_2->execute();
 				$count_2 = $stmt_2->rowCount();
 			?>
@@ -8166,7 +8166,7 @@
 		<?php elseif ($week_7 == "月" OR $week_7 == "火" OR $week_7 == "水" OR $week_7 == "木"): ?>
 			<?php
 				$sql_0 = "SELECT * FROM masters where day = '$ymd_7' AND time1 = '09:30~10:00' AND doctor = 'A医師'";
-				$stmt_0 = $db->query($sql_0);
+				$stmt_0 = $dbh->query($sql_0);
 				$stmt_0->execute();
 				$count_0 = $stmt_0->rowCount();
 			?>
@@ -8192,7 +8192,7 @@
 		<?php if ($week_0 == "金") :?>
 			<?php
 				$sql_1 = "SELECT * FROM masters where day = '$ymd_0' AND time1 = '10:00~10:30' AND doctor = 'A医師'";
-				$stmt_1 = $db->query($sql_1);
+				$stmt_1 = $dbh->query($sql_1);
 				$stmt_1->execute();
 				$count_1 = $stmt_1->rowCount();
 			?>
@@ -8209,7 +8209,7 @@
 			<?php endif; ?>
 			<?php
 				$sql_2 = "SELECT * FROM masters where day = '$ymd_0' AND time1 = '10:00~10:30' AND doctor = 'B医師'";
-				$stmt_2 = $db->query($sql_2);
+				$stmt_2 = $dbh->query($sql_2);
 				$stmt_2->execute();
 				$count_2 = $stmt_2->rowCount();
 			?>
@@ -8227,7 +8227,7 @@
 		<?php elseif ($week_0 == "月" OR $week_0 == "火" OR $week_0 == "水" OR $week_0 == "木"): ?>
 			<?php
 				$sql_0 = "SELECT * FROM masters where day = '$ymd_0' AND time1 = '10:00~10:30' AND doctor = 'A医師'";
-				$stmt_0 = $db->query($sql_0);
+				$stmt_0 = $dbh->query($sql_0);
 				$stmt_0->execute();
 				$count_0 = $stmt_0->rowCount();
 			?>
@@ -8250,7 +8250,7 @@
 		<?php if ($week_1 == "金") :?>
 			<?php
 				$sql_1 = "SELECT * FROM masters where day = '$ymd_1' AND time1 = '10:00~10:30' AND doctor = 'A医師'";
-				$stmt_1 = $db->query($sql_1);
+				$stmt_1 = $dbh->query($sql_1);
 				$stmt_1->execute();
 				$count_1 = $stmt_1->rowCount();
 			?>
@@ -8267,7 +8267,7 @@
 			<?php endif; ?>
 			<?php
 				$sql_2 = "SELECT * FROM masters where day = '$ymd_1' AND time1 = '10:00~10:30' AND doctor = 'B医師'";
-				$stmt_2 = $db->query($sql_2);
+				$stmt_2 = $dbh->query($sql_2);
 				$stmt_2->execute();
 				$count_2 = $stmt_2->rowCount();
 			?>
@@ -8285,7 +8285,7 @@
 		<?php elseif ($week_1 == "月" OR $week_1 == "火" OR $week_1 == "水" OR $week_1 == "木"): ?>
 			<?php
 				$sql_0 = "SELECT * FROM masters where day = '$ymd_1' AND time1 = '10:00~10:30' AND doctor = 'A医師'";
-				$stmt_0 = $db->query($sql_0);
+				$stmt_0 = $dbh->query($sql_0);
 				$stmt_0->execute();
 				$count_0 = $stmt_0->rowCount();
 			?>
@@ -8308,7 +8308,7 @@
 		<?php if ($week_2 == "金") :?>
 			<?php
 				$sql_1 = "SELECT * FROM masters where day = '$ymd_2' AND time1 = '10:00~10:30' AND doctor = 'A医師'";
-				$stmt_1 = $db->query($sql_1);
+				$stmt_1 = $dbh->query($sql_1);
 				$stmt_1->execute();
 				$count_1 = $stmt_1->rowCount();
 			?>
@@ -8325,7 +8325,7 @@
 			<?php endif; ?>
 			<?php
 				$sql_2 = "SELECT * FROM masters where day = '$ymd_2' AND time1 = '10:00~10:30' AND doctor = 'B医師'";
-				$stmt_2 = $db->query($sql_2);
+				$stmt_2 = $dbh->query($sql_2);
 				$stmt_2->execute();
 				$count_2 = $stmt_2->rowCount();
 			?>
@@ -8343,7 +8343,7 @@
 		<?php elseif ($week_2 == "月" OR $week_2 == "火" OR $week_2 == "水" OR $week_2 == "木"): ?>
 			<?php
 				$sql_0 = "SELECT * FROM masters where day = '$ymd_2' AND time1 = '10:00~10:30' AND doctor = 'A医師'";
-				$stmt_0 = $db->query($sql_0);
+				$stmt_0 = $dbh->query($sql_0);
 				$stmt_0->execute();
 				$count_0 = $stmt_0->rowCount();
 			?>
@@ -8366,7 +8366,7 @@
 		<?php if ($week_3 == "金") :?>
 			<?php
 				$sql_1 = "SELECT * FROM masters where day = '$ymd_3' AND time1 = '10:00~10:30' AND doctor = 'A医師'";
-				$stmt_1 = $db->query($sql_1);
+				$stmt_1 = $dbh->query($sql_1);
 				$stmt_1->execute();
 				$count_1 = $stmt_1->rowCount();
 			?>
@@ -8383,7 +8383,7 @@
 			<?php endif; ?>
 			<?php
 				$sql_2 = "SELECT * FROM masters where day = '$ymd_3' AND time1 = '10:00~10:30' AND doctor = 'B医師'";
-				$stmt_2 = $db->query($sql_2);
+				$stmt_2 = $dbh->query($sql_2);
 				$stmt_2->execute();
 				$count_2 = $stmt_2->rowCount();
 			?>
@@ -8401,7 +8401,7 @@
 		<?php elseif ($week_3 == "月" OR $week_3 == "火" OR $week_3 == "水" OR $week_3 == "木"): ?>
 			<?php
 				$sql_0 = "SELECT * FROM masters where day = '$ymd_3' AND time1 = '10:00~10:30' AND doctor = 'A医師'";
-				$stmt_0 = $db->query($sql_0);
+				$stmt_0 = $dbh->query($sql_0);
 				$stmt_0->execute();
 				$count_0 = $stmt_0->rowCount();
 			?>
@@ -8424,7 +8424,7 @@
 		<?php if ($week_4 == "金") :?>
 			<?php
 				$sql_1 = "SELECT * FROM masters where day = '$ymd_4' AND time1 = '10:00~10:30' AND doctor = 'A医師'";
-				$stmt_1 = $db->query($sql_1);
+				$stmt_1 = $dbh->query($sql_1);
 				$stmt_1->execute();
 				$count_1 = $stmt_1->rowCount();
 			?>
@@ -8441,7 +8441,7 @@
 			<?php endif; ?>
 			<?php
 				$sql_2 = "SELECT * FROM masters where day = '$ymd_4' AND time1 = '10:00~10:30' AND doctor = 'B医師'";
-				$stmt_2 = $db->query($sql_2);
+				$stmt_2 = $dbh->query($sql_2);
 				$stmt_2->execute();
 				$count_2 = $stmt_2->rowCount();
 			?>
@@ -8459,7 +8459,7 @@
 		<?php elseif ($week_4 == "月" OR $week_4 == "火" OR $week_4 == "水" OR $week_4 == "木"): ?>
 			<?php
 				$sql_0 = "SELECT * FROM masters where day = '$ymd_4' AND time1 = '10:00~10:30' AND doctor = 'A医師'";
-				$stmt_0 = $db->query($sql_0);
+				$stmt_0 = $dbh->query($sql_0);
 				$stmt_0->execute();
 				$count_0 = $stmt_0->rowCount();
 			?>
@@ -8482,7 +8482,7 @@
 		<?php if ($week_5 == "金") :?>
 			<?php
 				$sql_1 = "SELECT * FROM masters where day = '$ymd_5' AND time1 = '10:00~10:30' AND doctor = 'A医師'";
-				$stmt_1 = $db->query($sql_1);
+				$stmt_1 = $dbh->query($sql_1);
 				$stmt_1->execute();
 				$count_1 = $stmt_1->rowCount();
 			?>
@@ -8499,7 +8499,7 @@
 			<?php endif; ?>
 			<?php
 				$sql_2 = "SELECT * FROM masters where day = '$ymd_5' AND time1 = '10:00~10:30' AND doctor = 'B医師'";
-				$stmt_2 = $db->query($sql_2);
+				$stmt_2 = $dbh->query($sql_2);
 				$stmt_2->execute();
 				$count_2 = $stmt_2->rowCount();
 			?>
@@ -8517,7 +8517,7 @@
 		<?php elseif ($week_5 == "月" OR $week_5 == "火" OR $week_5 == "水" OR $week_5 == "木"): ?>
 			<?php
 				$sql_0 = "SELECT * FROM masters where day = '$ymd_5' AND time1 = '10:00~10:30' AND doctor = 'A医師'";
-				$stmt_0 = $db->query($sql_0);
+				$stmt_0 = $dbh->query($sql_0);
 				$stmt_0->execute();
 				$count_0 = $stmt_0->rowCount();
 			?>
@@ -8540,7 +8540,7 @@
 		<?php if ($week_6 == "金") :?>
 			<?php
 				$sql_1 = "SELECT * FROM masters where day = '$ymd_6' AND time1 = '10:00~10:30' AND doctor = 'A医師'";
-				$stmt_1 = $db->query($sql_1);
+				$stmt_1 = $dbh->query($sql_1);
 				$stmt_1->execute();
 				$count_1 = $stmt_1->rowCount();
 			?>
@@ -8557,7 +8557,7 @@
 			<?php endif; ?>
 			<?php
 				$sql_2 = "SELECT * FROM masters where day = '$ymd_6' AND time1 = '10:00~10:30' AND doctor = 'B医師'";
-				$stmt_2 = $db->query($sql_2);
+				$stmt_2 = $dbh->query($sql_2);
 				$stmt_2->execute();
 				$count_2 = $stmt_2->rowCount();
 			?>
@@ -8575,7 +8575,7 @@
 		<?php elseif ($week_6 == "月" OR $week_6 == "火" OR $week_6 == "水" OR $week_6 == "木"): ?>
 			<?php
 				$sql_0 = "SELECT * FROM masters where day = '$ymd_6' AND time1 = '10:00~10:30' AND doctor = 'A医師'";
-				$stmt_0 = $db->query($sql_0);
+				$stmt_0 = $dbh->query($sql_0);
 				$stmt_0->execute();
 				$count_0 = $stmt_0->rowCount();
 			?>
@@ -8598,7 +8598,7 @@
 		<?php if ($week_7 == "金") :?>
 			<?php
 				$sql_1 = "SELECT * FROM masters where day = '$ymd_7' AND time1 = '10:00~10:30' AND doctor = 'A医師'";
-				$stmt_1 = $db->query($sql_1);
+				$stmt_1 = $dbh->query($sql_1);
 				$stmt_1->execute();
 				$count_1 = $stmt_1->rowCount();
 			?>
@@ -8615,7 +8615,7 @@
 			<?php endif; ?>
 			<?php
 				$sql_2 = "SELECT * FROM masters where day = '$ymd_7' AND time1 = '10:00~10:30' AND doctor = 'B医師'";
-				$stmt_2 = $db->query($sql_2);
+				$stmt_2 = $dbh->query($sql_2);
 				$stmt_2->execute();
 				$count_2 = $stmt_2->rowCount();
 			?>
@@ -8633,7 +8633,7 @@
 		<?php elseif ($week_7 == "月" OR $week_7 == "火" OR $week_7 == "水" OR $week_7 == "木"): ?>
 			<?php
 				$sql_0 = "SELECT * FROM masters where day = '$ymd_7' AND time1 = '10:00~10:30' AND doctor = 'A医師'";
-				$stmt_0 = $db->query($sql_0);
+				$stmt_0 = $dbh->query($sql_0);
 				$stmt_0->execute();
 				$count_0 = $stmt_0->rowCount();
 			?>
@@ -8659,7 +8659,7 @@
 		<?php if ($week_0 == "金") :?>
 			<?php
 				$sql_1 = "SELECT * FROM masters where day = '$ymd_0' AND time1 = '10:30~11:00' AND doctor = 'A医師'";
-				$stmt_1 = $db->query($sql_1);
+				$stmt_1 = $dbh->query($sql_1);
 				$stmt_1->execute();
 				$count_1 = $stmt_1->rowCount();
 			?>
@@ -8676,7 +8676,7 @@
 			<?php endif; ?>
 			<?php
 				$sql_2 = "SELECT * FROM masters where day = '$ymd_0' AND time1 = '10:30~11:00' AND doctor = 'B医師'";
-				$stmt_2 = $db->query($sql_2);
+				$stmt_2 = $dbh->query($sql_2);
 				$stmt_2->execute();
 				$count_2 = $stmt_2->rowCount();
 			?>
@@ -8694,7 +8694,7 @@
 		<?php elseif ($week_0 == "月" OR $week_0 == "火" OR $week_0 == "水" OR $week_0 == "木"): ?>
 			<?php
 				$sql_0 = "SELECT * FROM masters where day = '$ymd_0' AND time1 = '10:30~11:00' AND doctor = 'A医師'";
-				$stmt_0 = $db->query($sql_0);
+				$stmt_0 = $dbh->query($sql_0);
 				$stmt_0->execute();
 				$count_0 = $stmt_0->rowCount();
 			?>
@@ -8717,7 +8717,7 @@
 		<?php if ($week_1 == "金") :?>
 			<?php
 				$sql_1 = "SELECT * FROM masters where day = '$ymd_1' AND time1 = '10:30~11:00' AND doctor = 'A医師'";
-				$stmt_1 = $db->query($sql_1);
+				$stmt_1 = $dbh->query($sql_1);
 				$stmt_1->execute();
 				$count_1 = $stmt_1->rowCount();
 			?>
@@ -8734,7 +8734,7 @@
 			<?php endif; ?>
 			<?php
 				$sql_2 = "SELECT * FROM masters where day = '$ymd_1' AND time1 = '10:30~11:00' AND doctor = 'B医師'";
-				$stmt_2 = $db->query($sql_2);
+				$stmt_2 = $dbh->query($sql_2);
 				$stmt_2->execute();
 				$count_2 = $stmt_2->rowCount();
 			?>
@@ -8752,7 +8752,7 @@
 		<?php elseif ($week_1 == "月" OR $week_1 == "火" OR $week_1 == "水" OR $week_1 == "木"): ?>
 			<?php
 				$sql_0 = "SELECT * FROM masters where day = '$ymd_1' AND time1 = '10:30~11:00' AND doctor = 'A医師'";
-				$stmt_0 = $db->query($sql_0);
+				$stmt_0 = $dbh->query($sql_0);
 				$stmt_0->execute();
 				$count_0 = $stmt_0->rowCount();
 			?>
@@ -8775,7 +8775,7 @@
 		<?php if ($week_2 == "金") :?>
 			<?php
 				$sql_1 = "SELECT * FROM masters where day = '$ymd_2' AND time1 = '10:30~11:00' AND doctor = 'A医師'";
-				$stmt_1 = $db->query($sql_1);
+				$stmt_1 = $dbh->query($sql_1);
 				$stmt_1->execute();
 				$count_1 = $stmt_1->rowCount();
 			?>
@@ -8792,7 +8792,7 @@
 			<?php endif; ?>
 			<?php
 				$sql_2 = "SELECT * FROM masters where day = '$ymd_2' AND time1 = '10:30~11:00' AND doctor = 'B医師'";
-				$stmt_2 = $db->query($sql_2);
+				$stmt_2 = $dbh->query($sql_2);
 				$stmt_2->execute();
 				$count_2 = $stmt_2->rowCount();
 			?>
@@ -8810,7 +8810,7 @@
 		<?php elseif ($week_2 == "月" OR $week_2 == "火" OR $week_2 == "水" OR $week_2 == "木"): ?>
 			<?php
 				$sql_0 = "SELECT * FROM masters where day = '$ymd_2' AND time1 = '10:30~11:00' AND doctor = 'A医師'";
-				$stmt_0 = $db->query($sql_0);
+				$stmt_0 = $dbh->query($sql_0);
 				$stmt_0->execute();
 				$count_0 = $stmt_0->rowCount();
 			?>
@@ -8833,7 +8833,7 @@
 		<?php if ($week_3 == "金") :?>
 			<?php
 				$sql_1 = "SELECT * FROM masters where day = '$ymd_3' AND time1 = '10:30~11:00' AND doctor = 'A医師'";
-				$stmt_1 = $db->query($sql_1);
+				$stmt_1 = $dbh->query($sql_1);
 				$stmt_1->execute();
 				$count_1 = $stmt_1->rowCount();
 			?>
@@ -8850,7 +8850,7 @@
 			<?php endif; ?>
 			<?php
 				$sql_2 = "SELECT * FROM masters where day = '$ymd_3' AND time1 = '10:30~11:00' AND doctor = 'B医師'";
-				$stmt_2 = $db->query($sql_2);
+				$stmt_2 = $dbh->query($sql_2);
 				$stmt_2->execute();
 				$count_2 = $stmt_2->rowCount();
 			?>
@@ -8868,7 +8868,7 @@
 		<?php elseif ($week_3 == "月" OR $week_3 == "火" OR $week_3 == "水" OR $week_3 == "木"): ?>
 			<?php
 				$sql_0 = "SELECT * FROM masters where day = '$ymd_3' AND time1 = '10:30~11:00' AND doctor = 'A医師'";
-				$stmt_0 = $db->query($sql_0);
+				$stmt_0 = $dbh->query($sql_0);
 				$stmt_0->execute();
 				$count_0 = $stmt_0->rowCount();
 			?>
@@ -8891,7 +8891,7 @@
 		<?php if ($week_4 == "金") :?>
 			<?php
 				$sql_1 = "SELECT * FROM masters where day = '$ymd_4' AND time1 = '10:30~11:00' AND doctor = 'A医師'";
-				$stmt_1 = $db->query($sql_1);
+				$stmt_1 = $dbh->query($sql_1);
 				$stmt_1->execute();
 				$count_1 = $stmt_1->rowCount();
 			?>
@@ -8908,7 +8908,7 @@
 			<?php endif; ?>
 			<?php
 				$sql_2 = "SELECT * FROM masters where day = '$ymd_4' AND time1 = '10:30~11:00' AND doctor = 'B医師'";
-				$stmt_2 = $db->query($sql_2);
+				$stmt_2 = $dbh->query($sql_2);
 				$stmt_2->execute();
 				$count_2 = $stmt_2->rowCount();
 			?>
@@ -8926,7 +8926,7 @@
 		<?php elseif ($week_4 == "月" OR $week_4 == "火" OR $week_4 == "水" OR $week_4 == "木"): ?>
 			<?php
 				$sql_0 = "SELECT * FROM masters where day = '$ymd_4' AND time1 = '10:30~11:00' AND doctor = 'A医師'";
-				$stmt_0 = $db->query($sql_0);
+				$stmt_0 = $dbh->query($sql_0);
 				$stmt_0->execute();
 				$count_0 = $stmt_0->rowCount();
 			?>
@@ -8949,7 +8949,7 @@
 		<?php if ($week_5 == "金") :?>
 			<?php
 				$sql_1 = "SELECT * FROM masters where day = '$ymd_5' AND time1 = '10:30~11:00' AND doctor = 'A医師'";
-				$stmt_1 = $db->query($sql_1);
+				$stmt_1 = $dbh->query($sql_1);
 				$stmt_1->execute();
 				$count_1 = $stmt_1->rowCount();
 			?>
@@ -8966,7 +8966,7 @@
 			<?php endif; ?>
 			<?php
 				$sql_2 = "SELECT * FROM masters where day = '$ymd_5' AND time1 = '10:30~11:00' AND doctor = 'B医師'";
-				$stmt_2 = $db->query($sql_2);
+				$stmt_2 = $dbh->query($sql_2);
 				$stmt_2->execute();
 				$count_2 = $stmt_2->rowCount();
 			?>
@@ -8984,7 +8984,7 @@
 		<?php elseif ($week_5 == "月" OR $week_5 == "火" OR $week_5 == "水" OR $week_5 == "木"): ?>
 			<?php
 				$sql_0 = "SELECT * FROM masters where day = '$ymd_5' AND time1 = '10:30~11:00' AND doctor = 'A医師'";
-				$stmt_0 = $db->query($sql_0);
+				$stmt_0 = $dbh->query($sql_0);
 				$stmt_0->execute();
 				$count_0 = $stmt_0->rowCount();
 			?>
@@ -9007,7 +9007,7 @@
 		<?php if ($week_6 == "金") :?>
 			<?php
 				$sql_1 = "SELECT * FROM masters where day = '$ymd_6' AND time1 = '10:30~11:00' AND doctor = 'A医師'";
-				$stmt_1 = $db->query($sql_1);
+				$stmt_1 = $dbh->query($sql_1);
 				$stmt_1->execute();
 				$count_1 = $stmt_1->rowCount();
 			?>
@@ -9024,7 +9024,7 @@
 			<?php endif; ?>
 			<?php
 				$sql_2 = "SELECT * FROM masters where day = '$ymd_6' AND time1 = '10:30~11:00' AND doctor = 'B医師'";
-				$stmt_2 = $db->query($sql_2);
+				$stmt_2 = $dbh->query($sql_2);
 				$stmt_2->execute();
 				$count_2 = $stmt_2->rowCount();
 			?>
@@ -9042,7 +9042,7 @@
 		<?php elseif ($week_6 == "月" OR $week_6 == "火" OR $week_6 == "水" OR $week_6 == "木"): ?>
 			<?php
 				$sql_0 = "SELECT * FROM masters where day = '$ymd_6' AND time1 = '10:30~11:00' AND doctor = 'A医師'";
-				$stmt_0 = $db->query($sql_0);
+				$stmt_0 = $dbh->query($sql_0);
 				$stmt_0->execute();
 				$count_0 = $stmt_0->rowCount();
 			?>
@@ -9065,7 +9065,7 @@
 		<?php if ($week_7 == "金") :?>
 			<?php
 				$sql_1 = "SELECT * FROM masters where day = '$ymd_7' AND time1 = '10:30~11:00' AND doctor = 'A医師'";
-				$stmt_1 = $db->query($sql_1);
+				$stmt_1 = $dbh->query($sql_1);
 				$stmt_1->execute();
 				$count_1 = $stmt_1->rowCount();
 			?>
@@ -9082,7 +9082,7 @@
 			<?php endif; ?>
 			<?php
 				$sql_2 = "SELECT * FROM masters where day = '$ymd_7' AND time1 = '10:30~11:00' AND doctor = 'B医師'";
-				$stmt_2 = $db->query($sql_2);
+				$stmt_2 = $dbh->query($sql_2);
 				$stmt_2->execute();
 				$count_2 = $stmt_2->rowCount();
 			?>
@@ -9100,7 +9100,7 @@
 		<?php elseif ($week_7 == "月" OR $week_7 == "火" OR $week_7 == "水" OR $week_7 == "木"): ?>
 			<?php
 				$sql_0 = "SELECT * FROM masters where day = '$ymd_7' AND time1 = '10:30~11:00' AND doctor = 'A医師'";
-				$stmt_0 = $db->query($sql_0);
+				$stmt_0 = $dbh->query($sql_0);
 				$stmt_0->execute();
 				$count_0 = $stmt_0->rowCount();
 			?>
@@ -9126,7 +9126,7 @@
 		<?php if ($week_0 == "金") :?>
 			<?php
 				$sql_1 = "SELECT * FROM masters where day = '$ymd_0' AND time1 = '11:00~11:30' AND doctor = 'A医師'";
-				$stmt_1 = $db->query($sql_1);
+				$stmt_1 = $dbh->query($sql_1);
 				$stmt_1->execute();
 				$count_1 = $stmt_1->rowCount();
 			?>
@@ -9143,7 +9143,7 @@
 			<?php endif; ?>
 			<?php
 				$sql_2 = "SELECT * FROM masters where day = '$ymd_0' AND time1 = '11:00~11:30' AND doctor = 'B医師'";
-				$stmt_2 = $db->query($sql_2);
+				$stmt_2 = $dbh->query($sql_2);
 				$stmt_2->execute();
 				$count_2 = $stmt_2->rowCount();
 			?>
@@ -9161,7 +9161,7 @@
 		<?php elseif ($week_0 == "月" OR $week_0 == "火" OR $week_0 == "水" OR $week_0 == "木"): ?>
 			<?php
 				$sql_0 = "SELECT * FROM masters where day = '$ymd_0' AND time1 = '11:00~11:30' AND doctor = 'A医師'";
-				$stmt_0 = $db->query($sql_0);
+				$stmt_0 = $dbh->query($sql_0);
 				$stmt_0->execute();
 				$count_0 = $stmt_0->rowCount();
 			?>
@@ -9184,7 +9184,7 @@
 		<?php if ($week_1 == "金") :?>
 			<?php
 				$sql_1 = "SELECT * FROM masters where day = '$ymd_1' AND time1 = '11:00~11:30' AND doctor = 'A医師'";
-				$stmt_1 = $db->query($sql_1);
+				$stmt_1 = $dbh->query($sql_1);
 				$stmt_1->execute();
 				$count_1 = $stmt_1->rowCount();
 			?>
@@ -9201,7 +9201,7 @@
 			<?php endif; ?>
 			<?php
 				$sql_2 = "SELECT * FROM masters where day = '$ymd_1' AND time1 = '11:00~11:30' AND doctor = 'B医師'";
-				$stmt_2 = $db->query($sql_2);
+				$stmt_2 = $dbh->query($sql_2);
 				$stmt_2->execute();
 				$count_2 = $stmt_2->rowCount();
 			?>
@@ -9219,7 +9219,7 @@
 		<?php elseif ($week_1 == "月" OR $week_1 == "火" OR $week_1 == "水" OR $week_1 == "木"): ?>
 			<?php
 				$sql_0 = "SELECT * FROM masters where day = '$ymd_1' AND time1 = '11:00~11:30' AND doctor = 'A医師'";
-				$stmt_0 = $db->query($sql_0);
+				$stmt_0 = $dbh->query($sql_0);
 				$stmt_0->execute();
 				$count_0 = $stmt_0->rowCount();
 			?>
@@ -9242,7 +9242,7 @@
 		<?php if ($week_2 == "金") :?>
 			<?php
 				$sql_1 = "SELECT * FROM masters where day = '$ymd_2' AND time1 = '11:00~11:30' AND doctor = 'A医師'";
-				$stmt_1 = $db->query($sql_1);
+				$stmt_1 = $dbh->query($sql_1);
 				$stmt_1->execute();
 				$count_1 = $stmt_1->rowCount();
 			?>
@@ -9259,7 +9259,7 @@
 			<?php endif; ?>
 			<?php
 				$sql_2 = "SELECT * FROM masters where day = '$ymd_2' AND time1 = '11:00~11:30' AND doctor = 'B医師'";
-				$stmt_2 = $db->query($sql_2);
+				$stmt_2 = $dbh->query($sql_2);
 				$stmt_2->execute();
 				$count_2 = $stmt_2->rowCount();
 			?>
@@ -9277,7 +9277,7 @@
 		<?php elseif ($week_2 == "月" OR $week_2 == "火" OR $week_2 == "水" OR $week_2 == "木"): ?>
 			<?php
 				$sql_0 = "SELECT * FROM masters where day = '$ymd_2' AND time1 = '11:00~11:30' AND doctor = 'A医師'";
-				$stmt_0 = $db->query($sql_0);
+				$stmt_0 = $dbh->query($sql_0);
 				$stmt_0->execute();
 				$count_0 = $stmt_0->rowCount();
 			?>
@@ -9300,7 +9300,7 @@
 		<?php if ($week_3 == "金") :?>
 			<?php
 				$sql_1 = "SELECT * FROM masters where day = '$ymd_3' AND time1 = '11:00~11:30' AND doctor = 'A医師'";
-				$stmt_1 = $db->query($sql_1);
+				$stmt_1 = $dbh->query($sql_1);
 				$stmt_1->execute();
 				$count_1 = $stmt_1->rowCount();
 			?>
@@ -9317,7 +9317,7 @@
 			<?php endif; ?>
 			<?php
 				$sql_2 = "SELECT * FROM masters where day = '$ymd_3' AND time1 = '11:00~11:30' AND doctor = 'B医師'";
-				$stmt_2 = $db->query($sql_2);
+				$stmt_2 = $dbh->query($sql_2);
 				$stmt_2->execute();
 				$count_2 = $stmt_2->rowCount();
 			?>
@@ -9335,7 +9335,7 @@
 		<?php elseif ($week_3 == "月" OR $week_3 == "火" OR $week_3 == "水" OR $week_3 == "木"): ?>
 			<?php
 				$sql_0 = "SELECT * FROM masters where day = '$ymd_3' AND time1 = '11:00~11:30' AND doctor = 'A医師'";
-				$stmt_0 = $db->query($sql_0);
+				$stmt_0 = $dbh->query($sql_0);
 				$stmt_0->execute();
 				$count_0 = $stmt_0->rowCount();
 			?>
@@ -9358,7 +9358,7 @@
 		<?php if ($week_4 == "金") :?>
 			<?php
 				$sql_1 = "SELECT * FROM masters where day = '$ymd_4' AND time1 = '11:00~11:30' AND doctor = 'A医師'";
-				$stmt_1 = $db->query($sql_1);
+				$stmt_1 = $dbh->query($sql_1);
 				$stmt_1->execute();
 				$count_1 = $stmt_1->rowCount();
 			?>
@@ -9375,7 +9375,7 @@
 			<?php endif; ?>
 			<?php
 				$sql_2 = "SELECT * FROM masters where day = '$ymd_4' AND time1 = '11:00~11:30' AND doctor = 'B医師'";
-				$stmt_2 = $db->query($sql_2);
+				$stmt_2 = $dbh->query($sql_2);
 				$stmt_2->execute();
 				$count_2 = $stmt_2->rowCount();
 			?>
@@ -9393,7 +9393,7 @@
 		<?php elseif ($week_4 == "月" OR $week_4 == "火" OR $week_4 == "水" OR $week_4 == "木"): ?>
 			<?php
 				$sql_0 = "SELECT * FROM masters where day = '$ymd_4' AND time1 = '11:00~11:30' AND doctor = 'A医師'";
-				$stmt_0 = $db->query($sql_0);
+				$stmt_0 = $dbh->query($sql_0);
 				$stmt_0->execute();
 				$count_0 = $stmt_0->rowCount();
 			?>
@@ -9416,7 +9416,7 @@
 		<?php if ($week_5 == "金") :?>
 			<?php
 				$sql_1 = "SELECT * FROM masters where day = '$ymd_5' AND time1 = '11:00~11:30' AND doctor = 'A医師'";
-				$stmt_1 = $db->query($sql_1);
+				$stmt_1 = $dbh->query($sql_1);
 				$stmt_1->execute();
 				$count_1 = $stmt_1->rowCount();
 			?>
@@ -9433,7 +9433,7 @@
 			<?php endif; ?>
 			<?php
 				$sql_2 = "SELECT * FROM masters where day = '$ymd_5' AND time1 = '11:00~11:30' AND doctor = 'B医師'";
-				$stmt_2 = $db->query($sql_2);
+				$stmt_2 = $dbh->query($sql_2);
 				$stmt_2->execute();
 				$count_2 = $stmt_2->rowCount();
 			?>
@@ -9451,7 +9451,7 @@
 		<?php elseif ($week_5 == "月" OR $week_5 == "火" OR $week_5 == "水" OR $week_5 == "木"): ?>
 			<?php
 				$sql_0 = "SELECT * FROM masters where day = '$ymd_5' AND time1 = '11:00~11:30' AND doctor = 'A医師'";
-				$stmt_0 = $db->query($sql_0);
+				$stmt_0 = $dbh->query($sql_0);
 				$stmt_0->execute();
 				$count_0 = $stmt_0->rowCount();
 			?>
@@ -9474,7 +9474,7 @@
 		<?php if ($week_6 == "金") :?>
 			<?php
 				$sql_1 = "SELECT * FROM masters where day = '$ymd_6' AND time1 = '11:00~11:30' AND doctor = 'A医師'";
-				$stmt_1 = $db->query($sql_1);
+				$stmt_1 = $dbh->query($sql_1);
 				$stmt_1->execute();
 				$count_1 = $stmt_1->rowCount();
 			?>
@@ -9491,7 +9491,7 @@
 			<?php endif; ?>
 			<?php
 				$sql_2 = "SELECT * FROM masters where day = '$ymd_6' AND time1 = '11:00~11:30' AND doctor = 'B医師'";
-				$stmt_2 = $db->query($sql_2);
+				$stmt_2 = $dbh->query($sql_2);
 				$stmt_2->execute();
 				$count_2 = $stmt_2->rowCount();
 			?>
@@ -9509,7 +9509,7 @@
 		<?php elseif ($week_6 == "月" OR $week_6 == "火" OR $week_6 == "水" OR $week_6 == "木"): ?>
 			<?php
 				$sql_0 = "SELECT * FROM masters where day = '$ymd_6' AND time1 = '11:00~11:30' AND doctor = 'A医師'";
-				$stmt_0 = $db->query($sql_0);
+				$stmt_0 = $dbh->query($sql_0);
 				$stmt_0->execute();
 				$count_0 = $stmt_0->rowCount();
 			?>
@@ -9532,7 +9532,7 @@
 		<?php if ($week_7 == "金") :?>
 			<?php
 				$sql_1 = "SELECT * FROM masters where day = '$ymd_7' AND time1 = '11:00~11:30' AND doctor = 'A医師'";
-				$stmt_1 = $db->query($sql_1);
+				$stmt_1 = $dbh->query($sql_1);
 				$stmt_1->execute();
 				$count_1 = $stmt_1->rowCount();
 			?>
@@ -9549,7 +9549,7 @@
 			<?php endif; ?>
 			<?php
 				$sql_2 = "SELECT * FROM masters where day = '$ymd_7' AND time1 = '11:00~11:30' AND doctor = 'B医師'";
-				$stmt_2 = $db->query($sql_2);
+				$stmt_2 = $dbh->query($sql_2);
 				$stmt_2->execute();
 				$count_2 = $stmt_2->rowCount();
 			?>
@@ -9567,7 +9567,7 @@
 		<?php elseif ($week_7 == "月" OR $week_7 == "火" OR $week_7 == "水" OR $week_7 == "木"): ?>
 			<?php
 				$sql_0 = "SELECT * FROM masters where day = '$ymd_7' AND time1 = '11:00~11:30' AND doctor = 'A医師'";
-				$stmt_0 = $db->query($sql_0);
+				$stmt_0 = $dbh->query($sql_0);
 				$stmt_0->execute();
 				$count_0 = $stmt_0->rowCount();
 			?>
@@ -9593,7 +9593,7 @@
 		<?php if ($week_0 == "金") :?>
 			<?php
 				$sql_1 = "SELECT * FROM masters where day = '$ymd_0' AND time1 = '11:30~12:00' AND doctor = 'A医師'";
-				$stmt_1 = $db->query($sql_1);
+				$stmt_1 = $dbh->query($sql_1);
 				$stmt_1->execute();
 				$count_1 = $stmt_1->rowCount();
 			?>
@@ -9610,7 +9610,7 @@
 			<?php endif; ?>
 			<?php
 				$sql_2 = "SELECT * FROM masters where day = '$ymd_0' AND time1 = '11:30~12:00' AND doctor = 'B医師'";
-				$stmt_2 = $db->query($sql_2);
+				$stmt_2 = $dbh->query($sql_2);
 				$stmt_2->execute();
 				$count_2 = $stmt_2->rowCount();
 			?>
@@ -9628,7 +9628,7 @@
 		<?php elseif ($week_0 == "月" OR $week_0 == "火" OR $week_0 == "水" OR $week_0 == "木"): ?>
 			<?php
 				$sql_0 = "SELECT * FROM masters where day = '$ymd_0' AND time1 = '11:30~12:00' AND doctor = 'A医師'";
-				$stmt_0 = $db->query($sql_0);
+				$stmt_0 = $dbh->query($sql_0);
 				$stmt_0->execute();
 				$count_0 = $stmt_0->rowCount();
 			?>
@@ -9651,7 +9651,7 @@
 		<?php if ($week_1 == "金") :?>
 			<?php
 				$sql_1 = "SELECT * FROM masters where day = '$ymd_1' AND time1 = '11:30~12:00' AND doctor = 'A医師'";
-				$stmt_1 = $db->query($sql_1);
+				$stmt_1 = $dbh->query($sql_1);
 				$stmt_1->execute();
 				$count_1 = $stmt_1->rowCount();
 			?>
@@ -9668,7 +9668,7 @@
 			<?php endif; ?>
 			<?php
 				$sql_2 = "SELECT * FROM masters where day = '$ymd_1' AND time1 = '11:30~12:00' AND doctor = 'B医師'";
-				$stmt_2 = $db->query($sql_2);
+				$stmt_2 = $dbh->query($sql_2);
 				$stmt_2->execute();
 				$count_2 = $stmt_2->rowCount();
 			?>
@@ -9686,7 +9686,7 @@
 		<?php elseif ($week_1 == "月" OR $week_1 == "火" OR $week_1 == "水" OR $week_1 == "木"): ?>
 			<?php
 				$sql_0 = "SELECT * FROM masters where day = '$ymd_1' AND time1 = '11:30~12:00' AND doctor = 'A医師'";
-				$stmt_0 = $db->query($sql_0);
+				$stmt_0 = $dbh->query($sql_0);
 				$stmt_0->execute();
 				$count_0 = $stmt_0->rowCount();
 			?>
@@ -9709,7 +9709,7 @@
 		<?php if ($week_2 == "金") :?>
 			<?php
 				$sql_1 = "SELECT * FROM masters where day = '$ymd_2' AND time1 = '11:30~12:00' AND doctor = 'A医師'";
-				$stmt_1 = $db->query($sql_1);
+				$stmt_1 = $dbh->query($sql_1);
 				$stmt_1->execute();
 				$count_1 = $stmt_1->rowCount();
 			?>
@@ -9726,7 +9726,7 @@
 			<?php endif; ?>
 			<?php
 				$sql_2 = "SELECT * FROM masters where day = '$ymd_2' AND time1 = '11:30~12:00' AND doctor = 'B医師'";
-				$stmt_2 = $db->query($sql_2);
+				$stmt_2 = $dbh->query($sql_2);
 				$stmt_2->execute();
 				$count_2 = $stmt_2->rowCount();
 			?>
@@ -9744,7 +9744,7 @@
 		<?php elseif ($week_2 == "月" OR $week_2 == "火" OR $week_2 == "水" OR $week_2 == "木"): ?>
 			<?php
 				$sql_0 = "SELECT * FROM masters where day = '$ymd_2' AND time1 = '11:30~12:00' AND doctor = 'A医師'";
-				$stmt_0 = $db->query($sql_0);
+				$stmt_0 = $dbh->query($sql_0);
 				$stmt_0->execute();
 				$count_0 = $stmt_0->rowCount();
 			?>
@@ -9767,7 +9767,7 @@
 		<?php if ($week_3 == "金") :?>
 			<?php
 				$sql_1 = "SELECT * FROM masters where day = '$ymd_3' AND time1 = '11:30~12:00' AND doctor = 'A医師'";
-				$stmt_1 = $db->query($sql_1);
+				$stmt_1 = $dbh->query($sql_1);
 				$stmt_1->execute();
 				$count_1 = $stmt_1->rowCount();
 			?>
@@ -9784,7 +9784,7 @@
 			<?php endif; ?>
 			<?php
 				$sql_2 = "SELECT * FROM masters where day = '$ymd_3' AND time1 = '11:30~12:00' AND doctor = 'B医師'";
-				$stmt_2 = $db->query($sql_2);
+				$stmt_2 = $dbh->query($sql_2);
 				$stmt_2->execute();
 				$count_2 = $stmt_2->rowCount();
 			?>
@@ -9802,7 +9802,7 @@
 		<?php elseif ($week_3 == "月" OR $week_3 == "火" OR $week_3 == "水" OR $week_3 == "木"): ?>
 			<?php
 				$sql_0 = "SELECT * FROM masters where day = '$ymd_3' AND time1 = '11:30~12:00' AND doctor = 'A医師'";
-				$stmt_0 = $db->query($sql_0);
+				$stmt_0 = $dbh->query($sql_0);
 				$stmt_0->execute();
 				$count_0 = $stmt_0->rowCount();
 			?>
@@ -9825,7 +9825,7 @@
 		<?php if ($week_4 == "金") :?>
 			<?php
 				$sql_1 = "SELECT * FROM masters where day = '$ymd_4' AND time1 = '11:30~12:00' AND doctor = 'A医師'";
-				$stmt_1 = $db->query($sql_1);
+				$stmt_1 = $dbh->query($sql_1);
 				$stmt_1->execute();
 				$count_1 = $stmt_1->rowCount();
 			?>
@@ -9842,7 +9842,7 @@
 			<?php endif; ?>
 			<?php
 				$sql_2 = "SELECT * FROM masters where day = '$ymd_4' AND time1 = '11:30~12:00' AND doctor = 'B医師'";
-				$stmt_2 = $db->query($sql_2);
+				$stmt_2 = $dbh->query($sql_2);
 				$stmt_2->execute();
 				$count_2 = $stmt_2->rowCount();
 			?>
@@ -9860,7 +9860,7 @@
 		<?php elseif ($week_4 == "月" OR $week_4 == "火" OR $week_4 == "水" OR $week_4 == "木"): ?>
 			<?php
 				$sql_0 = "SELECT * FROM masters where day = '$ymd_4' AND time1 = '11:30~12:00' AND doctor = 'A医師'";
-				$stmt_0 = $db->query($sql_0);
+				$stmt_0 = $dbh->query($sql_0);
 				$stmt_0->execute();
 				$count_0 = $stmt_0->rowCount();
 			?>
@@ -9883,7 +9883,7 @@
 		<?php if ($week_5 == "金") :?>
 			<?php
 				$sql_1 = "SELECT * FROM masters where day = '$ymd_5' AND time1 = '11:30~12:00' AND doctor = 'A医師'";
-				$stmt_1 = $db->query($sql_1);
+				$stmt_1 = $dbh->query($sql_1);
 				$stmt_1->execute();
 				$count_1 = $stmt_1->rowCount();
 			?>
@@ -9900,7 +9900,7 @@
 			<?php endif; ?>
 			<?php
 				$sql_2 = "SELECT * FROM masters where day = '$ymd_5' AND time1 = '11:30~12:00' AND doctor = 'B医師'";
-				$stmt_2 = $db->query($sql_2);
+				$stmt_2 = $dbh->query($sql_2);
 				$stmt_2->execute();
 				$count_2 = $stmt_2->rowCount();
 			?>
@@ -9918,7 +9918,7 @@
 		<?php elseif ($week_5 == "月" OR $week_5 == "火" OR $week_5 == "水" OR $week_5 == "木"): ?>
 			<?php
 				$sql_0 = "SELECT * FROM masters where day = '$ymd_5' AND time1 = '11:30~12:00' AND doctor = 'A医師'";
-				$stmt_0 = $db->query($sql_0);
+				$stmt_0 = $dbh->query($sql_0);
 				$stmt_0->execute();
 				$count_0 = $stmt_0->rowCount();
 			?>
@@ -9941,7 +9941,7 @@
 		<?php if ($week_6 == "金") :?>
 			<?php
 				$sql_1 = "SELECT * FROM masters where day = '$ymd_6' AND time1 = '11:30~12:00' AND doctor = 'A医師'";
-				$stmt_1 = $db->query($sql_1);
+				$stmt_1 = $dbh->query($sql_1);
 				$stmt_1->execute();
 				$count_1 = $stmt_1->rowCount();
 			?>
@@ -9958,7 +9958,7 @@
 			<?php endif; ?>
 			<?php
 				$sql_2 = "SELECT * FROM masters where day = '$ymd_6' AND time1 = '11:30~12:00' AND doctor = 'B医師'";
-				$stmt_2 = $db->query($sql_2);
+				$stmt_2 = $dbh->query($sql_2);
 				$stmt_2->execute();
 				$count_2 = $stmt_2->rowCount();
 			?>
@@ -9976,7 +9976,7 @@
 		<?php elseif ($week_6 == "月" OR $week_6 == "火" OR $week_6 == "水" OR $week_6 == "木"): ?>
 			<?php
 				$sql_0 = "SELECT * FROM masters where day = '$ymd_6' AND time1 = '11:30~12:00' AND doctor = 'A医師'";
-				$stmt_0 = $db->query($sql_0);
+				$stmt_0 = $dbh->query($sql_0);
 				$stmt_0->execute();
 				$count_0 = $stmt_0->rowCount();
 			?>
@@ -9999,7 +9999,7 @@
 		<?php if ($week_7 == "金") :?>
 			<?php
 				$sql_1 = "SELECT * FROM masters where day = '$ymd_7' AND time1 = '11:30~12:00' AND doctor = 'A医師'";
-				$stmt_1 = $db->query($sql_1);
+				$stmt_1 = $dbh->query($sql_1);
 				$stmt_1->execute();
 				$count_1 = $stmt_1->rowCount();
 			?>
@@ -10016,7 +10016,7 @@
 			<?php endif; ?>
 			<?php
 				$sql_2 = "SELECT * FROM masters where day = '$ymd_7' AND time1 = '11:30~12:00' AND doctor = 'B医師'";
-				$stmt_2 = $db->query($sql_2);
+				$stmt_2 = $dbh->query($sql_2);
 				$stmt_2->execute();
 				$count_2 = $stmt_2->rowCount();
 			?>
@@ -10034,7 +10034,7 @@
 		<?php elseif ($week_7 == "月" OR $week_7 == "火" OR $week_7 == "水" OR $week_7 == "木"): ?>
 			<?php
 				$sql_0 = "SELECT * FROM masters where day = '$ymd_7' AND time1 = '11:30~12:00' AND doctor = 'A医師'";
-				$stmt_0 = $db->query($sql_0);
+				$stmt_0 = $dbh->query($sql_0);
 				$stmt_0->execute();
 				$count_0 = $stmt_0->rowCount();
 			?>
@@ -10060,7 +10060,7 @@
 		<?php if ($week_0 == "金") :?>
 			<?php
 				$sql_1 = "SELECT * FROM masters where day = '$ymd_0' AND time1 = '12:00~12:30' AND doctor = 'A医師'";
-				$stmt_1 = $db->query($sql_1);
+				$stmt_1 = $dbh->query($sql_1);
 				$stmt_1->execute();
 				$count_1 = $stmt_1->rowCount();
 			?>
@@ -10077,7 +10077,7 @@
 			<?php endif; ?>
 			<?php
 				$sql_2 = "SELECT * FROM masters where day = '$ymd_0' AND time1 = '12:00~12:30' AND doctor = 'B医師'";
-				$stmt_2 = $db->query($sql_2);
+				$stmt_2 = $dbh->query($sql_2);
 				$stmt_2->execute();
 				$count_2 = $stmt_2->rowCount();
 			?>
@@ -10095,7 +10095,7 @@
 		<?php elseif ($week_0 == "月" OR $week_0 == "火" OR $week_0 == "水" OR $week_0 == "木"): ?>
 			<?php
 				$sql_0 = "SELECT * FROM masters where day = '$ymd_0' AND time1 = '12:00~12:30' AND doctor = 'A医師'";
-				$stmt_0 = $db->query($sql_0);
+				$stmt_0 = $dbh->query($sql_0);
 				$stmt_0->execute();
 				$count_0 = $stmt_0->rowCount();
 			?>
@@ -10118,7 +10118,7 @@
 		<?php if ($week_1 == "金") :?>
 			<?php
 				$sql_1 = "SELECT * FROM masters where day = '$ymd_1' AND time1 = '12:00~12:30' AND doctor = 'A医師'";
-				$stmt_1 = $db->query($sql_1);
+				$stmt_1 = $dbh->query($sql_1);
 				$stmt_1->execute();
 				$count_1 = $stmt_1->rowCount();
 			?>
@@ -10135,7 +10135,7 @@
 			<?php endif; ?>
 			<?php
 				$sql_2 = "SELECT * FROM masters where day = '$ymd_1' AND time1 = '12:00~12:30' AND doctor = 'B医師'";
-				$stmt_2 = $db->query($sql_2);
+				$stmt_2 = $dbh->query($sql_2);
 				$stmt_2->execute();
 				$count_2 = $stmt_2->rowCount();
 			?>
@@ -10153,7 +10153,7 @@
 		<?php elseif ($week_1 == "月" OR $week_1 == "火" OR $week_1 == "水" OR $week_1 == "木"): ?>
 			<?php
 				$sql_0 = "SELECT * FROM masters where day = '$ymd_1' AND time1 = '12:00~12:30' AND doctor = 'A医師'";
-				$stmt_0 = $db->query($sql_0);
+				$stmt_0 = $dbh->query($sql_0);
 				$stmt_0->execute();
 				$count_0 = $stmt_0->rowCount();
 			?>
@@ -10176,7 +10176,7 @@
 		<?php if ($week_2 == "金") :?>
 			<?php
 				$sql_1 = "SELECT * FROM masters where day = '$ymd_2' AND time1 = '12:00~12:30' AND doctor = 'A医師'";
-				$stmt_1 = $db->query($sql_1);
+				$stmt_1 = $dbh->query($sql_1);
 				$stmt_1->execute();
 				$count_1 = $stmt_1->rowCount();
 			?>
@@ -10193,7 +10193,7 @@
 			<?php endif; ?>
 			<?php
 				$sql_2 = "SELECT * FROM masters where day = '$ymd_2' AND time1 = '12:00~12:30' AND doctor = 'B医師'";
-				$stmt_2 = $db->query($sql_2);
+				$stmt_2 = $dbh->query($sql_2);
 				$stmt_2->execute();
 				$count_2 = $stmt_2->rowCount();
 			?>
@@ -10211,7 +10211,7 @@
 		<?php elseif ($week_2 == "月" OR $week_2 == "火" OR $week_2 == "水" OR $week_2 == "木"): ?>
 			<?php
 				$sql_0 = "SELECT * FROM masters where day = '$ymd_2' AND time1 = '12:00~12:30' AND doctor = 'A医師'";
-				$stmt_0 = $db->query($sql_0);
+				$stmt_0 = $dbh->query($sql_0);
 				$stmt_0->execute();
 				$count_0 = $stmt_0->rowCount();
 			?>
@@ -10234,7 +10234,7 @@
 		<?php if ($week_3 == "金") :?>
 			<?php
 				$sql_1 = "SELECT * FROM masters where day = '$ymd_3' AND time1 = '12:00~12:30' AND doctor = 'A医師'";
-				$stmt_1 = $db->query($sql_1);
+				$stmt_1 = $dbh->query($sql_1);
 				$stmt_1->execute();
 				$count_1 = $stmt_1->rowCount();
 			?>
@@ -10251,7 +10251,7 @@
 			<?php endif; ?>
 			<?php
 				$sql_2 = "SELECT * FROM masters where day = '$ymd_3' AND time1 = '12:00~12:30' AND doctor = 'B医師'";
-				$stmt_2 = $db->query($sql_2);
+				$stmt_2 = $dbh->query($sql_2);
 				$stmt_2->execute();
 				$count_2 = $stmt_2->rowCount();
 			?>
@@ -10269,7 +10269,7 @@
 		<?php elseif ($week_3 == "月" OR $week_3 == "火" OR $week_3 == "水" OR $week_3 == "木"): ?>
 			<?php
 				$sql_0 = "SELECT * FROM masters where day = '$ymd_3' AND time1 = '12:00~12:30' AND doctor = 'A医師'";
-				$stmt_0 = $db->query($sql_0);
+				$stmt_0 = $dbh->query($sql_0);
 				$stmt_0->execute();
 				$count_0 = $stmt_0->rowCount();
 			?>
@@ -10292,7 +10292,7 @@
 		<?php if ($week_4 == "金") :?>
 			<?php
 				$sql_1 = "SELECT * FROM masters where day = '$ymd_4' AND time1 = '12:00~12:30' AND doctor = 'A医師'";
-				$stmt_1 = $db->query($sql_1);
+				$stmt_1 = $dbh->query($sql_1);
 				$stmt_1->execute();
 				$count_1 = $stmt_1->rowCount();
 			?>
@@ -10309,7 +10309,7 @@
 			<?php endif; ?>
 			<?php
 				$sql_2 = "SELECT * FROM masters where day = '$ymd_4' AND time1 = '12:00~12:30' AND doctor = 'B医師'";
-				$stmt_2 = $db->query($sql_2);
+				$stmt_2 = $dbh->query($sql_2);
 				$stmt_2->execute();
 				$count_2 = $stmt_2->rowCount();
 			?>
@@ -10327,7 +10327,7 @@
 		<?php elseif ($week_4 == "月" OR $week_4 == "火" OR $week_4 == "水" OR $week_4 == "木"): ?>
 			<?php
 				$sql_0 = "SELECT * FROM masters where day = '$ymd_4' AND time1 = '12:00~12:30' AND doctor = 'A医師'";
-				$stmt_0 = $db->query($sql_0);
+				$stmt_0 = $dbh->query($sql_0);
 				$stmt_0->execute();
 				$count_0 = $stmt_0->rowCount();
 			?>
@@ -10350,7 +10350,7 @@
 		<?php if ($week_5 == "金") :?>
 			<?php
 				$sql_1 = "SELECT * FROM masters where day = '$ymd_5' AND time1 = '12:00~12:30' AND doctor = 'A医師'";
-				$stmt_1 = $db->query($sql_1);
+				$stmt_1 = $dbh->query($sql_1);
 				$stmt_1->execute();
 				$count_1 = $stmt_1->rowCount();
 			?>
@@ -10367,7 +10367,7 @@
 			<?php endif; ?>
 			<?php
 				$sql_2 = "SELECT * FROM masters where day = '$ymd_5' AND time1 = '12:00~12:30' AND doctor = 'B医師'";
-				$stmt_2 = $db->query($sql_2);
+				$stmt_2 = $dbh->query($sql_2);
 				$stmt_2->execute();
 				$count_2 = $stmt_2->rowCount();
 			?>
@@ -10385,7 +10385,7 @@
 		<?php elseif ($week_5 == "月" OR $week_5 == "火" OR $week_5 == "水" OR $week_5 == "木"): ?>
 			<?php
 				$sql_0 = "SELECT * FROM masters where day = '$ymd_5' AND time1 = '12:00~12:30' AND doctor = 'A医師'";
-				$stmt_0 = $db->query($sql_0);
+				$stmt_0 = $dbh->query($sql_0);
 				$stmt_0->execute();
 				$count_0 = $stmt_0->rowCount();
 			?>
@@ -10408,7 +10408,7 @@
 		<?php if ($week_6 == "金") :?>
 			<?php
 				$sql_1 = "SELECT * FROM masters where day = '$ymd_6' AND time1 = '12:00~12:30' AND doctor = 'A医師'";
-				$stmt_1 = $db->query($sql_1);
+				$stmt_1 = $dbh->query($sql_1);
 				$stmt_1->execute();
 				$count_1 = $stmt_1->rowCount();
 			?>
@@ -10425,7 +10425,7 @@
 			<?php endif; ?>
 			<?php
 				$sql_2 = "SELECT * FROM masters where day = '$ymd_6' AND time1 = '12:00~12:30' AND doctor = 'B医師'";
-				$stmt_2 = $db->query($sql_2);
+				$stmt_2 = $dbh->query($sql_2);
 				$stmt_2->execute();
 				$count_2 = $stmt_2->rowCount();
 			?>
@@ -10443,7 +10443,7 @@
 		<?php elseif ($week_6 == "月" OR $week_6 == "火" OR $week_6 == "水" OR $week_6 == "木"): ?>
 			<?php
 				$sql_0 = "SELECT * FROM masters where day = '$ymd_6' AND time1 = '12:00~12:30' AND doctor = 'A医師'";
-				$stmt_0 = $db->query($sql_0);
+				$stmt_0 = $dbh->query($sql_0);
 				$stmt_0->execute();
 				$count_0 = $stmt_0->rowCount();
 			?>
@@ -10466,7 +10466,7 @@
 		<?php if ($week_7 == "金") :?>
 			<?php
 				$sql_1 = "SELECT * FROM masters where day = '$ymd_7' AND time1 = '12:00~12:30' AND doctor = 'A医師'";
-				$stmt_1 = $db->query($sql_1);
+				$stmt_1 = $dbh->query($sql_1);
 				$stmt_1->execute();
 				$count_1 = $stmt_1->rowCount();
 			?>
@@ -10483,7 +10483,7 @@
 			<?php endif; ?>
 			<?php
 				$sql_2 = "SELECT * FROM masters where day = '$ymd_7' AND time1 = '12:00~12:30' AND doctor = 'B医師'";
-				$stmt_2 = $db->query($sql_2);
+				$stmt_2 = $dbh->query($sql_2);
 				$stmt_2->execute();
 				$count_2 = $stmt_2->rowCount();
 			?>
@@ -10501,7 +10501,7 @@
 		<?php elseif ($week_7 == "月" OR $week_7 == "火" OR $week_7 == "水" OR $week_7 == "木"): ?>
 			<?php
 				$sql_0 = "SELECT * FROM masters where day = '$ymd_7' AND time1 = '12:00~12:30' AND doctor = 'A医師'";
-				$stmt_0 = $db->query($sql_0);
+				$stmt_0 = $dbh->query($sql_0);
 				$stmt_0->execute();
 				$count_0 = $stmt_0->rowCount();
 			?>
@@ -10540,7 +10540,7 @@
 		<?php if ($week_0 == "月" OR $week_0 == "火" OR $week_0 == "木" OR $week_0 == "金"): ?>
 			<?php
 				$sql_0 = "SELECT * FROM masters where day = '$ymd_0' AND time1 = '14:00~14:30' AND doctor = 'A医師'";
-				$stmt_0 = $db->query($sql_0);
+				$stmt_0 = $dbh->query($sql_0);
 				$stmt_0->execute();
 				$count_0 = $stmt_0->rowCount();
 			?>
@@ -10559,7 +10559,7 @@
 		<?php elseif ($week_0 == "水"): ?>
 			<?php
 				$sql_3 = "SELECT * FROM masters where day = '$ymd_0' AND time1 = '14:00~14:30' AND doctor = 'C医師'";
-				$stmt_3 = $db->query($sql_3);
+				$stmt_3 = $dbh->query($sql_3);
 				$stmt_3->execute();
 				$count_3 = $stmt_3->rowCount();
 			?>
@@ -10582,7 +10582,7 @@
 		<?php if ($week_1 == "月" OR $week_1 == "火" OR $week_1 == "木" OR $week_1 == "金"): ?>
 			<?php
 				$sql_0 = "SELECT * FROM masters where day = '$ymd_1' AND time1 = '14:00~14:30' AND doctor = 'A医師'";
-				$stmt_0 = $db->query($sql_0);
+				$stmt_0 = $dbh->query($sql_0);
 				$stmt_0->execute();
 				$count_0 = $stmt_0->rowCount();
 			?>
@@ -10601,7 +10601,7 @@
 		<?php elseif ($week_1 == "水"): ?>
 			<?php
 				$sql_3 = "SELECT * FROM masters where day = '$ymd_1' AND time1 = '14:00~14:30' AND doctor = 'C医師'";
-				$stmt_3 = $db->query($sql_3);
+				$stmt_3 = $dbh->query($sql_3);
 				$stmt_3->execute();
 				$count_3 = $stmt_3->rowCount();
 			?>
@@ -10624,7 +10624,7 @@
 		<?php if ($week_2 == "月" OR $week_2 == "火" OR $week_2 == "木" OR $week_2 == "金"): ?>
 			<?php
 				$sql_0 = "SELECT * FROM masters where day = '$ymd_2' AND time1 = '14:00~14:30' AND doctor = 'A医師'";
-				$stmt_0 = $db->query($sql_0);
+				$stmt_0 = $dbh->query($sql_0);
 				$stmt_0->execute();
 				$count_0 = $stmt_0->rowCount();
 			?>
@@ -10643,7 +10643,7 @@
 		<?php elseif ($week_2 == "水"): ?>
 			<?php
 				$sql_3 = "SELECT * FROM masters where day = '$ymd_2' AND time1 = '14:00~14:30' AND doctor = 'C医師'";
-				$stmt_3 = $db->query($sql_3);
+				$stmt_3 = $dbh->query($sql_3);
 				$stmt_3->execute();
 				$count_3 = $stmt_3->rowCount();
 			?>
@@ -10666,7 +10666,7 @@
 		<?php if ($week_3 == "月" OR $week_3 == "火" OR $week_3 == "木" OR $week_3 == "金"): ?>
 			<?php
 				$sql_0 = "SELECT * FROM masters where day = '$ymd_3' AND time1 = '14:00~14:30' AND doctor = 'A医師'";
-				$stmt_0 = $db->query($sql_0);
+				$stmt_0 = $dbh->query($sql_0);
 				$stmt_0->execute();
 				$count_0 = $stmt_0->rowCount();
 			?>
@@ -10685,7 +10685,7 @@
 		<?php elseif ($week_3 == "水"): ?>
 			<?php
 				$sql_3 = "SELECT * FROM masters where day = '$ymd_3' AND time1 = '14:00~14:30' AND doctor = 'C医師'";
-				$stmt_3 = $db->query($sql_3);
+				$stmt_3 = $dbh->query($sql_3);
 				$stmt_3->execute();
 				$count_3 = $stmt_3->rowCount();
 			?>
@@ -10708,7 +10708,7 @@
 		<?php if ($week_4 == "月" OR $week_4 == "火" OR $week_4 == "木" OR $week_4 == "金"): ?>
 			<?php
 				$sql_0 = "SELECT * FROM masters where day = '$ymd_4' AND time1 = '14:00~14:30' AND doctor = 'A医師'";
-				$stmt_0 = $db->query($sql_0);
+				$stmt_0 = $dbh->query($sql_0);
 				$stmt_0->execute();
 				$count_0 = $stmt_0->rowCount();
 			?>
@@ -10727,7 +10727,7 @@
 		<?php elseif ($week_4 == "水"): ?>
 			<?php
 				$sql_3 = "SELECT * FROM masters where day = '$ymd_4' AND time1 = '14:00~14:30' AND doctor = 'C医師'";
-				$stmt_3 = $db->query($sql_3);
+				$stmt_3 = $dbh->query($sql_3);
 				$stmt_3->execute();
 				$count_3 = $stmt_3->rowCount();
 			?>
@@ -10750,7 +10750,7 @@
 		<?php if ($week_5 == "月" OR $week_5 == "火" OR $week_5 == "木" OR $week_5 == "金"): ?>
 			<?php
 				$sql_0 = "SELECT * FROM masters where day = '$ymd_5' AND time1 = '14:00~14:30' AND doctor = 'A医師'";
-				$stmt_0 = $db->query($sql_0);
+				$stmt_0 = $dbh->query($sql_0);
 				$stmt_0->execute();
 				$count_0 = $stmt_0->rowCount();
 			?>
@@ -10769,7 +10769,7 @@
 		<?php elseif ($week_5 == "水"): ?>
 			<?php
 				$sql_3 = "SELECT * FROM masters where day = '$ymd_5' AND time1 = '14:00~14:30' AND doctor = 'C医師'";
-				$stmt_3 = $db->query($sql_3);
+				$stmt_3 = $dbh->query($sql_3);
 				$stmt_3->execute();
 				$count_3 = $stmt_3->rowCount();
 			?>
@@ -10792,7 +10792,7 @@
 		<?php if ($week_6 == "月" OR $week_6 == "火" OR $week_6 == "木" OR $week_6 == "金"): ?>
 			<?php
 				$sql_0 = "SELECT * FROM masters where day = '$ymd_0' AND time1 = '14:00~14:30' AND doctor = 'A医師'";
-				$stmt_0 = $db->query($sql_0);
+				$stmt_0 = $dbh->query($sql_0);
 				$stmt_0->execute();
 				$count_0 = $stmt_0->rowCount();
 			?>
@@ -10811,7 +10811,7 @@
 		<?php elseif ($week_6 == "水"): ?>
 			<?php
 				$sql_3 = "SELECT * FROM masters where day = '$ymd_6' AND time1 = '14:00~14:30' AND doctor = 'C医師'";
-				$stmt_3 = $db->query($sql_3);
+				$stmt_3 = $dbh->query($sql_3);
 				$stmt_3->execute();
 				$count_3 = $stmt_3->rowCount();
 			?>
@@ -10834,7 +10834,7 @@
 		<?php if ($week_7 == "月" OR $week_7 == "火" OR $week_7 == "木" OR $week_7 == "金"): ?>
 			<?php
 				$sql_0 = "SELECT * FROM masters where day = '$ymd_7' AND time1 = '14:00~14:30' AND doctor = 'A医師'";
-				$stmt_0 = $db->query($sql_0);
+				$stmt_0 = $dbh->query($sql_0);
 				$stmt_0->execute();
 				$count_0 = $stmt_0->rowCount();
 			?>
@@ -10853,7 +10853,7 @@
 		<?php elseif ($week_7 == "水"): ?>
 			<?php
 				$sql_3 = "SELECT * FROM masters where day = '$ymd_7' AND time1 = '14:00~14:30' AND doctor = 'C医師'";
-				$stmt_3 = $db->query($sql_3);
+				$stmt_3 = $dbh->query($sql_3);
 				$stmt_3->execute();
 				$count_3 = $stmt_3->rowCount();
 			?>
@@ -10879,7 +10879,7 @@
 		<?php if ($week_0 == "月" OR $week_0 == "火" OR $week_0 == "木" OR $week_0 == "金"): ?>
 			<?php
 				$sql_0 = "SELECT * FROM masters where day = '$ymd_0' AND time1 = '14:30~15:00' AND doctor = 'A医師'";
-				$stmt_0 = $db->query($sql_0);
+				$stmt_0 = $dbh->query($sql_0);
 				$stmt_0->execute();
 				$count_0 = $stmt_0->rowCount();
 			?>
@@ -10898,7 +10898,7 @@
 		<?php elseif ($week_0 == "水"): ?>
 			<?php
 				$sql_3 = "SELECT * FROM masters where day = '$ymd_0' AND time1 = '14:30~15:00' AND doctor = 'C医師'";
-				$stmt_3 = $db->query($sql_3);
+				$stmt_3 = $dbh->query($sql_3);
 				$stmt_3->execute();
 				$count_3 = $stmt_3->rowCount();
 			?>
@@ -10921,7 +10921,7 @@
 		<?php if ($week_1 == "月" OR $week_1 == "火" OR $week_1 == "木" OR $week_1 == "金"): ?>
 			<?php
 				$sql_0 = "SELECT * FROM masters where day = '$ymd_1' AND time1 = '14:30~15:00' AND doctor = 'A医師'";
-				$stmt_0 = $db->query($sql_0);
+				$stmt_0 = $dbh->query($sql_0);
 				$stmt_0->execute();
 				$count_0 = $stmt_0->rowCount();
 			?>
@@ -10940,7 +10940,7 @@
 		<?php elseif ($week_1 == "水"): ?>
 			<?php
 				$sql_3 = "SELECT * FROM masters where day = '$ymd_1' AND time1 = '14:30~15:00' AND doctor = 'C医師'";
-				$stmt_3 = $db->query($sql_3);
+				$stmt_3 = $dbh->query($sql_3);
 				$stmt_3->execute();
 				$count_3 = $stmt_3->rowCount();
 			?>
@@ -10963,7 +10963,7 @@
 		<?php if ($week_2 == "月" OR $week_2 == "火" OR $week_2 == "木" OR $week_2 == "金"): ?>
 			<?php
 				$sql_0 = "SELECT * FROM masters where day = '$ymd_2' AND time1 = '14:30~15:00' AND doctor = 'A医師'";
-				$stmt_0 = $db->query($sql_0);
+				$stmt_0 = $dbh->query($sql_0);
 				$stmt_0->execute();
 				$count_0 = $stmt_0->rowCount();
 			?>
@@ -10982,7 +10982,7 @@
 		<?php elseif ($week_2 == "水"): ?>
 			<?php
 				$sql_3 = "SELECT * FROM masters where day = '$ymd_2' AND time1 = '14:30~15:00' AND doctor = 'C医師'";
-				$stmt_3 = $db->query($sql_3);
+				$stmt_3 = $dbh->query($sql_3);
 				$stmt_3->execute();
 				$count_3 = $stmt_3->rowCount();
 			?>
@@ -11005,7 +11005,7 @@
 		<?php if ($week_3 == "月" OR $week_3 == "火" OR $week_3 == "木" OR $week_3 == "金"): ?>
 			<?php
 				$sql_0 = "SELECT * FROM masters where day = '$ymd_3' AND time1 = '14:30~15:00' AND doctor = 'A医師'";
-				$stmt_0 = $db->query($sql_0);
+				$stmt_0 = $dbh->query($sql_0);
 				$stmt_0->execute();
 				$count_0 = $stmt_0->rowCount();
 			?>
@@ -11024,7 +11024,7 @@
 		<?php elseif ($week_3 == "水"): ?>
 			<?php
 				$sql_3 = "SELECT * FROM masters where day = '$ymd_3' AND time1 = '14:30~15:00' AND doctor = 'C医師'";
-				$stmt_3 = $db->query($sql_3);
+				$stmt_3 = $dbh->query($sql_3);
 				$stmt_3->execute();
 				$count_3 = $stmt_3->rowCount();
 			?>
@@ -11047,7 +11047,7 @@
 		<?php if ($week_4 == "月" OR $week_4 == "火" OR $week_4 == "木" OR $week_4 == "金"): ?>
 			<?php
 				$sql_0 = "SELECT * FROM masters where day = '$ymd_4' AND time1 = '14:30~15:00' AND doctor = 'A医師'";
-				$stmt_0 = $db->query($sql_0);
+				$stmt_0 = $dbh->query($sql_0);
 				$stmt_0->execute();
 				$count_0 = $stmt_0->rowCount();
 			?>
@@ -11066,7 +11066,7 @@
 		<?php elseif ($week_4 == "水"): ?>
 			<?php
 				$sql_3 = "SELECT * FROM masters where day = '$ymd_4' AND time1 = '14:30~15:00' AND doctor = 'C医師'";
-				$stmt_3 = $db->query($sql_3);
+				$stmt_3 = $dbh->query($sql_3);
 				$stmt_3->execute();
 				$count_3 = $stmt_3->rowCount();
 			?>
@@ -11089,7 +11089,7 @@
 		<?php if ($week_5 == "月" OR $week_5 == "火" OR $week_5 == "木" OR $week_5 == "金"): ?>
 			<?php
 				$sql_0 = "SELECT * FROM masters where day = '$ymd_5' AND time1 = '14:30~15:00' AND doctor = 'A医師'";
-				$stmt_0 = $db->query($sql_0);
+				$stmt_0 = $dbh->query($sql_0);
 				$stmt_0->execute();
 				$count_0 = $stmt_0->rowCount();
 			?>
@@ -11108,7 +11108,7 @@
 		<?php elseif ($week_5 == "水"): ?>
 			<?php
 				$sql_3 = "SELECT * FROM masters where day = '$ymd_5' AND time1 = '14:30~15:00' AND doctor = 'C医師'";
-				$stmt_3 = $db->query($sql_3);
+				$stmt_3 = $dbh->query($sql_3);
 				$stmt_3->execute();
 				$count_3 = $stmt_3->rowCount();
 			?>
@@ -11131,7 +11131,7 @@
 		<?php if ($week_6 == "月" OR $week_6 == "火" OR $week_6 == "木" OR $week_6 == "金"): ?>
 			<?php
 				$sql_0 = "SELECT * FROM masters where day = '$ymd_0' AND time1 = '14:30~15:00' AND doctor = 'A医師'";
-				$stmt_0 = $db->query($sql_0);
+				$stmt_0 = $dbh->query($sql_0);
 				$stmt_0->execute();
 				$count_0 = $stmt_0->rowCount();
 			?>
@@ -11150,7 +11150,7 @@
 		<?php elseif ($week_6 == "水"): ?>
 			<?php
 				$sql_3 = "SELECT * FROM masters where day = '$ymd_6' AND time1 = '14:30~15:00' AND doctor = 'C医師'";
-				$stmt_3 = $db->query($sql_3);
+				$stmt_3 = $dbh->query($sql_3);
 				$stmt_3->execute();
 				$count_3 = $stmt_3->rowCount();
 			?>
@@ -11173,7 +11173,7 @@
 		<?php if ($week_7 == "月" OR $week_7 == "火" OR $week_7 == "木" OR $week_7 == "金"): ?>
 			<?php
 				$sql_0 = "SELECT * FROM masters where day = '$ymd_7' AND time1 = '14:30~15:00' AND doctor = 'A医師'";
-				$stmt_0 = $db->query($sql_0);
+				$stmt_0 = $dbh->query($sql_0);
 				$stmt_0->execute();
 				$count_0 = $stmt_0->rowCount();
 			?>
@@ -11192,7 +11192,7 @@
 		<?php elseif ($week_7 == "水"): ?>
 			<?php
 				$sql_3 = "SELECT * FROM masters where day = '$ymd_7' AND time1 = '14:30~15:00' AND doctor = 'C医師'";
-				$stmt_3 = $db->query($sql_3);
+				$stmt_3 = $dbh->query($sql_3);
 				$stmt_3->execute();
 				$count_3 = $stmt_3->rowCount();
 			?>
@@ -11218,7 +11218,7 @@
 		<?php if ($week_0 == "月" OR $week_0 == "火" OR $week_0 == "木" OR $week_0 == "金"): ?>
 			<?php
 				$sql_0 = "SELECT * FROM masters where day = '$ymd_0' AND time1 = '15:00~15:30' AND doctor = 'A医師'";
-				$stmt_0 = $db->query($sql_0);
+				$stmt_0 = $dbh->query($sql_0);
 				$stmt_0->execute();
 				$count_0 = $stmt_0->rowCount();
 			?>
@@ -11237,7 +11237,7 @@
 		<?php elseif ($week_0 == "水"): ?>
 			<?php
 				$sql_3 = "SELECT * FROM masters where day = '$ymd_0' AND time1 = '15:00~15:30' AND doctor = 'C医師'";
-				$stmt_3 = $db->query($sql_3);
+				$stmt_3 = $dbh->query($sql_3);
 				$stmt_3->execute();
 				$count_3 = $stmt_3->rowCount();
 			?>
@@ -11260,7 +11260,7 @@
 		<?php if ($week_1 == "月" OR $week_1 == "火" OR $week_1 == "木" OR $week_1 == "金"): ?>
 			<?php
 				$sql_0 = "SELECT * FROM masters where day = '$ymd_1' AND time1 = '15:00~15:30' AND doctor = 'A医師'";
-				$stmt_0 = $db->query($sql_0);
+				$stmt_0 = $dbh->query($sql_0);
 				$stmt_0->execute();
 				$count_0 = $stmt_0->rowCount();
 			?>
@@ -11279,7 +11279,7 @@
 		<?php elseif ($week_1 == "水"): ?>
 			<?php
 				$sql_3 = "SELECT * FROM masters where day = '$ymd_1' AND time1 = '15:00~15:30' AND doctor = 'C医師'";
-				$stmt_3 = $db->query($sql_3);
+				$stmt_3 = $dbh->query($sql_3);
 				$stmt_3->execute();
 				$count_3 = $stmt_3->rowCount();
 			?>
@@ -11302,7 +11302,7 @@
 		<?php if ($week_2 == "月" OR $week_2 == "火" OR $week_2 == "木" OR $week_2 == "金"): ?>
 			<?php
 				$sql_0 = "SELECT * FROM masters where day = '$ymd_2' AND time1 = '15:00~15:30' AND doctor = 'A医師'";
-				$stmt_0 = $db->query($sql_0);
+				$stmt_0 = $dbh->query($sql_0);
 				$stmt_0->execute();
 				$count_0 = $stmt_0->rowCount();
 			?>
@@ -11321,7 +11321,7 @@
 		<?php elseif ($week_2 == "水"): ?>
 			<?php
 				$sql_3 = "SELECT * FROM masters where day = '$ymd_2' AND time1 = '15:00~15:30' AND doctor = 'C医師'";
-				$stmt_3 = $db->query($sql_3);
+				$stmt_3 = $dbh->query($sql_3);
 				$stmt_3->execute();
 				$count_3 = $stmt_3->rowCount();
 			?>
@@ -11344,7 +11344,7 @@
 		<?php if ($week_3 == "月" OR $week_3 == "火" OR $week_3 == "木" OR $week_3 == "金"): ?>
 			<?php
 				$sql_0 = "SELECT * FROM masters where day = '$ymd_3' AND time1 = '15:00~15:30' AND doctor = 'A医師'";
-				$stmt_0 = $db->query($sql_0);
+				$stmt_0 = $dbh->query($sql_0);
 				$stmt_0->execute();
 				$count_0 = $stmt_0->rowCount();
 			?>
@@ -11363,7 +11363,7 @@
 		<?php elseif ($week_3 == "水"): ?>
 			<?php
 				$sql_3 = "SELECT * FROM masters where day = '$ymd_3' AND time1 = '15:00~15:30' AND doctor = 'C医師'";
-				$stmt_3 = $db->query($sql_3);
+				$stmt_3 = $dbh->query($sql_3);
 				$stmt_3->execute();
 				$count_3 = $stmt_3->rowCount();
 			?>
@@ -11386,7 +11386,7 @@
 		<?php if ($week_4 == "月" OR $week_4 == "火" OR $week_4 == "木" OR $week_4 == "金"): ?>
 			<?php
 				$sql_0 = "SELECT * FROM masters where day = '$ymd_4' AND time1 = '15:00~15:30' AND doctor = 'A医師'";
-				$stmt_0 = $db->query($sql_0);
+				$stmt_0 = $dbh->query($sql_0);
 				$stmt_0->execute();
 				$count_0 = $stmt_0->rowCount();
 			?>
@@ -11405,7 +11405,7 @@
 		<?php elseif ($week_4 == "水"): ?>
 			<?php
 				$sql_3 = "SELECT * FROM masters where day = '$ymd_4' AND time1 = '15:00~15:30' AND doctor = 'C医師'";
-				$stmt_3 = $db->query($sql_3);
+				$stmt_3 = $dbh->query($sql_3);
 				$stmt_3->execute();
 				$count_3 = $stmt_3->rowCount();
 			?>
@@ -11428,7 +11428,7 @@
 		<?php if ($week_5 == "月" OR $week_5 == "火" OR $week_5 == "木" OR $week_5 == "金"): ?>
 			<?php
 				$sql_0 = "SELECT * FROM masters where day = '$ymd_5' AND time1 = '15:00~15:30' AND doctor = 'A医師'";
-				$stmt_0 = $db->query($sql_0);
+				$stmt_0 = $dbh->query($sql_0);
 				$stmt_0->execute();
 				$count_0 = $stmt_0->rowCount();
 			?>
@@ -11447,7 +11447,7 @@
 		<?php elseif ($week_5 == "水"): ?>
 			<?php
 				$sql_3 = "SELECT * FROM masters where day = '$ymd_5' AND time1 = '15:00~15:30' AND doctor = 'C医師'";
-				$stmt_3 = $db->query($sql_3);
+				$stmt_3 = $dbh->query($sql_3);
 				$stmt_3->execute();
 				$count_3 = $stmt_3->rowCount();
 			?>
@@ -11470,7 +11470,7 @@
 		<?php if ($week_6 == "月" OR $week_6 == "火" OR $week_6 == "木" OR $week_6 == "金"): ?>
 			<?php
 				$sql_0 = "SELECT * FROM masters where day = '$ymd_0' AND time1 = '15:00~15:30' AND doctor = 'A医師'";
-				$stmt_0 = $db->query($sql_0);
+				$stmt_0 = $dbh->query($sql_0);
 				$stmt_0->execute();
 				$count_0 = $stmt_0->rowCount();
 			?>
@@ -11489,7 +11489,7 @@
 		<?php elseif ($week_6 == "水"): ?>
 			<?php
 				$sql_3 = "SELECT * FROM masters where day = '$ymd_6' AND time1 = '15:00~15:30' AND doctor = 'C医師'";
-				$stmt_3 = $db->query($sql_3);
+				$stmt_3 = $dbh->query($sql_3);
 				$stmt_3->execute();
 				$count_3 = $stmt_3->rowCount();
 			?>
@@ -11512,7 +11512,7 @@
 		<?php if ($week_7 == "月" OR $week_7 == "火" OR $week_7 == "木" OR $week_7 == "金"): ?>
 			<?php
 				$sql_0 = "SELECT * FROM masters where day = '$ymd_7' AND time1 = '15:00~15:30' AND doctor = 'A医師'";
-				$stmt_0 = $db->query($sql_0);
+				$stmt_0 = $dbh->query($sql_0);
 				$stmt_0->execute();
 				$count_0 = $stmt_0->rowCount();
 			?>
@@ -11531,7 +11531,7 @@
 		<?php elseif ($week_7 == "水"): ?>
 			<?php
 				$sql_3 = "SELECT * FROM masters where day = '$ymd_7' AND time1 = '15:00~15:30' AND doctor = 'C医師'";
-				$stmt_3 = $db->query($sql_3);
+				$stmt_3 = $dbh->query($sql_3);
 				$stmt_3->execute();
 				$count_3 = $stmt_3->rowCount();
 			?>
@@ -11557,7 +11557,7 @@
 		<?php if ($week_0 == "月" OR $week_0 == "火" OR $week_0 == "木" OR $week_0 == "金"): ?>
 			<?php
 				$sql_0 = "SELECT * FROM masters where day = '$ymd_0' AND time1 = '15:30~16:00' AND doctor = 'A医師'";
-				$stmt_0 = $db->query($sql_0);
+				$stmt_0 = $dbh->query($sql_0);
 				$stmt_0->execute();
 				$count_0 = $stmt_0->rowCount();
 			?>
@@ -11576,7 +11576,7 @@
 		<?php elseif ($week_0 == "水"): ?>
 			<?php
 				$sql_3 = "SELECT * FROM masters where day = '$ymd_0' AND time1 = '15:30~16:00' AND doctor = 'C医師'";
-				$stmt_3 = $db->query($sql_3);
+				$stmt_3 = $dbh->query($sql_3);
 				$stmt_3->execute();
 				$count_3 = $stmt_3->rowCount();
 			?>
@@ -11599,7 +11599,7 @@
 		<?php if ($week_1 == "月" OR $week_1 == "火" OR $week_1 == "木" OR $week_1 == "金"): ?>
 			<?php
 				$sql_0 = "SELECT * FROM masters where day = '$ymd_1' AND time1 = '15:30~16:00' AND doctor = 'A医師'";
-				$stmt_0 = $db->query($sql_0);
+				$stmt_0 = $dbh->query($sql_0);
 				$stmt_0->execute();
 				$count_0 = $stmt_0->rowCount();
 			?>
@@ -11618,7 +11618,7 @@
 		<?php elseif ($week_1 == "水"): ?>
 			<?php
 				$sql_3 = "SELECT * FROM masters where day = '$ymd_1' AND time1 = '15:30~16:00' AND doctor = 'C医師'";
-				$stmt_3 = $db->query($sql_3);
+				$stmt_3 = $dbh->query($sql_3);
 				$stmt_3->execute();
 				$count_3 = $stmt_3->rowCount();
 			?>
@@ -11641,7 +11641,7 @@
 		<?php if ($week_2 == "月" OR $week_2 == "火" OR $week_2 == "木" OR $week_2 == "金"): ?>
 			<?php
 				$sql_0 = "SELECT * FROM masters where day = '$ymd_2' AND time1 = '15:30~16:00' AND doctor = 'A医師'";
-				$stmt_0 = $db->query($sql_0);
+				$stmt_0 = $dbh->query($sql_0);
 				$stmt_0->execute();
 				$count_0 = $stmt_0->rowCount();
 			?>
@@ -11660,7 +11660,7 @@
 		<?php elseif ($week_2 == "水"): ?>
 			<?php
 				$sql_3 = "SELECT * FROM masters where day = '$ymd_2' AND time1 = '15:30~16:00' AND doctor = 'C医師'";
-				$stmt_3 = $db->query($sql_3);
+				$stmt_3 = $dbh->query($sql_3);
 				$stmt_3->execute();
 				$count_3 = $stmt_3->rowCount();
 			?>
@@ -11683,7 +11683,7 @@
 		<?php if ($week_3 == "月" OR $week_3 == "火" OR $week_3 == "木" OR $week_3 == "金"): ?>
 			<?php
 				$sql_0 = "SELECT * FROM masters where day = '$ymd_3' AND time1 = '15:30~16:00' AND doctor = 'A医師'";
-				$stmt_0 = $db->query($sql_0);
+				$stmt_0 = $dbh->query($sql_0);
 				$stmt_0->execute();
 				$count_0 = $stmt_0->rowCount();
 			?>
@@ -11702,7 +11702,7 @@
 		<?php elseif ($week_3 == "水"): ?>
 			<?php
 				$sql_3 = "SELECT * FROM masters where day = '$ymd_3' AND time1 = '15:30~16:00' AND doctor = 'C医師'";
-				$stmt_3 = $db->query($sql_3);
+				$stmt_3 = $dbh->query($sql_3);
 				$stmt_3->execute();
 				$count_3 = $stmt_3->rowCount();
 			?>
@@ -11725,7 +11725,7 @@
 		<?php if ($week_4 == "月" OR $week_4 == "火" OR $week_4 == "木" OR $week_4 == "金"): ?>
 			<?php
 				$sql_0 = "SELECT * FROM masters where day = '$ymd_4' AND time1 = '15:30~16:00' AND doctor = 'A医師'";
-				$stmt_0 = $db->query($sql_0);
+				$stmt_0 = $dbh->query($sql_0);
 				$stmt_0->execute();
 				$count_0 = $stmt_0->rowCount();
 			?>
@@ -11744,7 +11744,7 @@
 		<?php elseif ($week_4 == "水"): ?>
 			<?php
 				$sql_3 = "SELECT * FROM masters where day = '$ymd_4' AND time1 = '15:30~16:00' AND doctor = 'C医師'";
-				$stmt_3 = $db->query($sql_3);
+				$stmt_3 = $dbh->query($sql_3);
 				$stmt_3->execute();
 				$count_3 = $stmt_3->rowCount();
 			?>
@@ -11767,7 +11767,7 @@
 		<?php if ($week_5 == "月" OR $week_5 == "火" OR $week_5 == "木" OR $week_5 == "金"): ?>
 			<?php
 				$sql_0 = "SELECT * FROM masters where day = '$ymd_5' AND time1 = '15:30~16:00' AND doctor = 'A医師'";
-				$stmt_0 = $db->query($sql_0);
+				$stmt_0 = $dbh->query($sql_0);
 				$stmt_0->execute();
 				$count_0 = $stmt_0->rowCount();
 			?>
@@ -11786,7 +11786,7 @@
 		<?php elseif ($week_5 == "水"): ?>
 			<?php
 				$sql_3 = "SELECT * FROM masters where day = '$ymd_5' AND time1 = '15:30~16:00' AND doctor = 'C医師'";
-				$stmt_3 = $db->query($sql_3);
+				$stmt_3 = $dbh->query($sql_3);
 				$stmt_3->execute();
 				$count_3 = $stmt_3->rowCount();
 			?>
@@ -11809,7 +11809,7 @@
 		<?php if ($week_6 == "月" OR $week_6 == "火" OR $week_6 == "木" OR $week_6 == "金"): ?>
 			<?php
 				$sql_0 = "SELECT * FROM masters where day = '$ymd_0' AND time1 = '15:30~16:00' AND doctor = 'A医師'";
-				$stmt_0 = $db->query($sql_0);
+				$stmt_0 = $dbh->query($sql_0);
 				$stmt_0->execute();
 				$count_0 = $stmt_0->rowCount();
 			?>
@@ -11828,7 +11828,7 @@
 		<?php elseif ($week_6 == "水"): ?>
 			<?php
 				$sql_3 = "SELECT * FROM masters where day = '$ymd_6' AND time1 = '15:30~16:00' AND doctor = 'C医師'";
-				$stmt_3 = $db->query($sql_3);
+				$stmt_3 = $dbh->query($sql_3);
 				$stmt_3->execute();
 				$count_3 = $stmt_3->rowCount();
 			?>
@@ -11851,7 +11851,7 @@
 		<?php if ($week_7 == "月" OR $week_7 == "火" OR $week_7 == "木" OR $week_7 == "金"): ?>
 			<?php
 				$sql_0 = "SELECT * FROM masters where day = '$ymd_7' AND time1 = '15:30~16:00' AND doctor = 'A医師'";
-				$stmt_0 = $db->query($sql_0);
+				$stmt_0 = $dbh->query($sql_0);
 				$stmt_0->execute();
 				$count_0 = $stmt_0->rowCount();
 			?>
@@ -11870,7 +11870,7 @@
 		<?php elseif ($week_7 == "水"): ?>
 			<?php
 				$sql_3 = "SELECT * FROM masters where day = '$ymd_7' AND time1 = '15:30~16:00' AND doctor = 'C医師'";
-				$stmt_3 = $db->query($sql_3);
+				$stmt_3 = $dbh->query($sql_3);
 				$stmt_3->execute();
 				$count_3 = $stmt_3->rowCount();
 			?>
@@ -11896,7 +11896,7 @@
 		<?php if ($week_0 == "月" OR $week_0 == "火" OR $week_0 == "木" OR $week_0 == "金"): ?>
 			<?php
 				$sql_0 = "SELECT * FROM masters where day = '$ymd_0' AND time1 = '16:00~16:30' AND doctor = 'A医師'";
-				$stmt_0 = $db->query($sql_0);
+				$stmt_0 = $dbh->query($sql_0);
 				$stmt_0->execute();
 				$count_0 = $stmt_0->rowCount();
 			?>
@@ -11915,7 +11915,7 @@
 		<?php elseif ($week_0 == "水"): ?>
 			<?php
 				$sql_3 = "SELECT * FROM masters where day = '$ymd_0' AND time1 = '16:00~16:30' AND doctor = 'C医師'";
-				$stmt_3 = $db->query($sql_3);
+				$stmt_3 = $dbh->query($sql_3);
 				$stmt_3->execute();
 				$count_3 = $stmt_3->rowCount();
 			?>
@@ -11938,7 +11938,7 @@
 		<?php if ($week_1 == "月" OR $week_1 == "火" OR $week_1 == "木" OR $week_1 == "金"): ?>
 			<?php
 				$sql_0 = "SELECT * FROM masters where day = '$ymd_1' AND time1 = '16:00~16:30' AND doctor = 'A医師'";
-				$stmt_0 = $db->query($sql_0);
+				$stmt_0 = $dbh->query($sql_0);
 				$stmt_0->execute();
 				$count_0 = $stmt_0->rowCount();
 			?>
@@ -11957,7 +11957,7 @@
 		<?php elseif ($week_1 == "水"): ?>
 			<?php
 				$sql_3 = "SELECT * FROM masters where day = '$ymd_1' AND time1 = '16:00~16:30' AND doctor = 'C医師'";
-				$stmt_3 = $db->query($sql_3);
+				$stmt_3 = $dbh->query($sql_3);
 				$stmt_3->execute();
 				$count_3 = $stmt_3->rowCount();
 			?>
@@ -11980,7 +11980,7 @@
 		<?php if ($week_2 == "月" OR $week_2 == "火" OR $week_2 == "木" OR $week_2 == "金"): ?>
 			<?php
 				$sql_0 = "SELECT * FROM masters where day = '$ymd_2' AND time1 = '16:00~16:30' AND doctor = 'A医師'";
-				$stmt_0 = $db->query($sql_0);
+				$stmt_0 = $dbh->query($sql_0);
 				$stmt_0->execute();
 				$count_0 = $stmt_0->rowCount();
 			?>
@@ -11999,7 +11999,7 @@
 		<?php elseif ($week_2 == "水"): ?>
 			<?php
 				$sql_3 = "SELECT * FROM masters where day = '$ymd_2' AND time1 = '16:00~16:30' AND doctor = 'C医師'";
-				$stmt_3 = $db->query($sql_3);
+				$stmt_3 = $dbh->query($sql_3);
 				$stmt_3->execute();
 				$count_3 = $stmt_3->rowCount();
 			?>
@@ -12022,7 +12022,7 @@
 		<?php if ($week_3 == "月" OR $week_3 == "火" OR $week_3 == "木" OR $week_3 == "金"): ?>
 			<?php
 				$sql_0 = "SELECT * FROM masters where day = '$ymd_3' AND time1 = '16:00~16:30' AND doctor = 'A医師'";
-				$stmt_0 = $db->query($sql_0);
+				$stmt_0 = $dbh->query($sql_0);
 				$stmt_0->execute();
 				$count_0 = $stmt_0->rowCount();
 			?>
@@ -12041,7 +12041,7 @@
 		<?php elseif ($week_3 == "水"): ?>
 			<?php
 				$sql_3 = "SELECT * FROM masters where day = '$ymd_3' AND time1 = '16:00~16:30' AND doctor = 'C医師'";
-				$stmt_3 = $db->query($sql_3);
+				$stmt_3 = $dbh->query($sql_3);
 				$stmt_3->execute();
 				$count_3 = $stmt_3->rowCount();
 			?>
@@ -12064,7 +12064,7 @@
 		<?php if ($week_4 == "月" OR $week_4 == "火" OR $week_4 == "木" OR $week_4 == "金"): ?>
 			<?php
 				$sql_0 = "SELECT * FROM masters where day = '$ymd_4' AND time1 = '16:00~16:30' AND doctor = 'A医師'";
-				$stmt_0 = $db->query($sql_0);
+				$stmt_0 = $dbh->query($sql_0);
 				$stmt_0->execute();
 				$count_0 = $stmt_0->rowCount();
 			?>
@@ -12083,7 +12083,7 @@
 		<?php elseif ($week_4 == "水"): ?>
 			<?php
 				$sql_3 = "SELECT * FROM masters where day = '$ymd_4' AND time1 = '16:00~16:30' AND doctor = 'C医師'";
-				$stmt_3 = $db->query($sql_3);
+				$stmt_3 = $dbh->query($sql_3);
 				$stmt_3->execute();
 				$count_3 = $stmt_3->rowCount();
 			?>
@@ -12106,7 +12106,7 @@
 		<?php if ($week_5 == "月" OR $week_5 == "火" OR $week_5 == "木" OR $week_5 == "金"): ?>
 			<?php
 				$sql_0 = "SELECT * FROM masters where day = '$ymd_5' AND time1 = '16:00~16:30' AND doctor = 'A医師'";
-				$stmt_0 = $db->query($sql_0);
+				$stmt_0 = $dbh->query($sql_0);
 				$stmt_0->execute();
 				$count_0 = $stmt_0->rowCount();
 			?>
@@ -12125,7 +12125,7 @@
 		<?php elseif ($week_5 == "水"): ?>
 			<?php
 				$sql_3 = "SELECT * FROM masters where day = '$ymd_5' AND time1 = '16:00~16:30' AND doctor = 'C医師'";
-				$stmt_3 = $db->query($sql_3);
+				$stmt_3 = $dbh->query($sql_3);
 				$stmt_3->execute();
 				$count_3 = $stmt_3->rowCount();
 			?>
@@ -12148,7 +12148,7 @@
 		<?php if ($week_6 == "月" OR $week_6 == "火" OR $week_6 == "木" OR $week_6 == "金"): ?>
 			<?php
 				$sql_0 = "SELECT * FROM masters where day = '$ymd_0' AND time1 = '16:00~16:30' AND doctor = 'A医師'";
-				$stmt_0 = $db->query($sql_0);
+				$stmt_0 = $dbh->query($sql_0);
 				$stmt_0->execute();
 				$count_0 = $stmt_0->rowCount();
 			?>
@@ -12167,7 +12167,7 @@
 		<?php elseif ($week_6 == "水"): ?>
 			<?php
 				$sql_3 = "SELECT * FROM masters where day = '$ymd_6' AND time1 = '16:00~16:30' AND doctor = 'C医師'";
-				$stmt_3 = $db->query($sql_3);
+				$stmt_3 = $dbh->query($sql_3);
 				$stmt_3->execute();
 				$count_3 = $stmt_3->rowCount();
 			?>
@@ -12190,7 +12190,7 @@
 		<?php if ($week_7 == "月" OR $week_7 == "火" OR $week_7 == "木" OR $week_7 == "金"): ?>
 			<?php
 				$sql_0 = "SELECT * FROM masters where day = '$ymd_7' AND time1 = '16:00~16:30' AND doctor = 'A医師'";
-				$stmt_0 = $db->query($sql_0);
+				$stmt_0 = $dbh->query($sql_0);
 				$stmt_0->execute();
 				$count_0 = $stmt_0->rowCount();
 			?>
@@ -12209,7 +12209,7 @@
 		<?php elseif ($week_7 == "水"): ?>
 			<?php
 				$sql_3 = "SELECT * FROM masters where day = '$ymd_7' AND time1 = '16:00~16:30' AND doctor = 'C医師'";
-				$stmt_3 = $db->query($sql_3);
+				$stmt_3 = $dbh->query($sql_3);
 				$stmt_3->execute();
 				$count_3 = $stmt_3->rowCount();
 			?>
@@ -12235,7 +12235,7 @@
 		<?php if ($week_0 == "月" OR $week_0 == "火" OR $week_0 == "木" OR $week_0 == "金"): ?>
 			<?php
 				$sql_0 = "SELECT * FROM masters where day = '$ymd_0' AND time1 = '16:30~17:00' AND doctor = 'A医師'";
-				$stmt_0 = $db->query($sql_0);
+				$stmt_0 = $dbh->query($sql_0);
 				$stmt_0->execute();
 				$count_0 = $stmt_0->rowCount();
 			?>
@@ -12254,7 +12254,7 @@
 		<?php elseif ($week_0 == "水"): ?>
 			<?php
 				$sql_3 = "SELECT * FROM masters where day = '$ymd_0' AND time1 = '16:30~17:00' AND doctor = 'C医師'";
-				$stmt_3 = $db->query($sql_3);
+				$stmt_3 = $dbh->query($sql_3);
 				$stmt_3->execute();
 				$count_3 = $stmt_3->rowCount();
 			?>
@@ -12277,7 +12277,7 @@
 		<?php if ($week_1 == "月" OR $week_1 == "火" OR $week_1 == "木" OR $week_1 == "金"): ?>
 			<?php
 				$sql_0 = "SELECT * FROM masters where day = '$ymd_1' AND time1 = '16:30~17:00' AND doctor = 'A医師'";
-				$stmt_0 = $db->query($sql_0);
+				$stmt_0 = $dbh->query($sql_0);
 				$stmt_0->execute();
 				$count_0 = $stmt_0->rowCount();
 			?>
@@ -12296,7 +12296,7 @@
 		<?php elseif ($week_1 == "水"): ?>
 			<?php
 				$sql_3 = "SELECT * FROM masters where day = '$ymd_1' AND time1 = '16:30~17:00' AND doctor = 'C医師'";
-				$stmt_3 = $db->query($sql_3);
+				$stmt_3 = $dbh->query($sql_3);
 				$stmt_3->execute();
 				$count_3 = $stmt_3->rowCount();
 			?>
@@ -12319,7 +12319,7 @@
 		<?php if ($week_2 == "月" OR $week_2 == "火" OR $week_2 == "木" OR $week_2 == "金"): ?>
 			<?php
 				$sql_0 = "SELECT * FROM masters where day = '$ymd_2' AND time1 = '16:30~17:00' AND doctor = 'A医師'";
-				$stmt_0 = $db->query($sql_0);
+				$stmt_0 = $dbh->query($sql_0);
 				$stmt_0->execute();
 				$count_0 = $stmt_0->rowCount();
 			?>
@@ -12338,7 +12338,7 @@
 		<?php elseif ($week_2 == "水"): ?>
 			<?php
 				$sql_3 = "SELECT * FROM masters where day = '$ymd_2' AND time1 = '16:30~17:00' AND doctor = 'C医師'";
-				$stmt_3 = $db->query($sql_3);
+				$stmt_3 = $dbh->query($sql_3);
 				$stmt_3->execute();
 				$count_3 = $stmt_3->rowCount();
 			?>
@@ -12361,7 +12361,7 @@
 		<?php if ($week_3 == "月" OR $week_3 == "火" OR $week_3 == "木" OR $week_3 == "金"): ?>
 			<?php
 				$sql_0 = "SELECT * FROM masters where day = '$ymd_3' AND time1 = '16:30~17:00' AND doctor = 'A医師'";
-				$stmt_0 = $db->query($sql_0);
+				$stmt_0 = $dbh->query($sql_0);
 				$stmt_0->execute();
 				$count_0 = $stmt_0->rowCount();
 			?>
@@ -12380,7 +12380,7 @@
 		<?php elseif ($week_3 == "水"): ?>
 			<?php
 				$sql_3 = "SELECT * FROM masters where day = '$ymd_3' AND time1 = '16:30~17:00' AND doctor = 'C医師'";
-				$stmt_3 = $db->query($sql_3);
+				$stmt_3 = $dbh->query($sql_3);
 				$stmt_3->execute();
 				$count_3 = $stmt_3->rowCount();
 			?>
@@ -12403,7 +12403,7 @@
 		<?php if ($week_4 == "月" OR $week_4 == "火" OR $week_4 == "木" OR $week_4 == "金"): ?>
 			<?php
 				$sql_0 = "SELECT * FROM masters where day = '$ymd_4' AND time1 = '16:30~17:00' AND doctor = 'A医師'";
-				$stmt_0 = $db->query($sql_0);
+				$stmt_0 = $dbh->query($sql_0);
 				$stmt_0->execute();
 				$count_0 = $stmt_0->rowCount();
 			?>
@@ -12422,7 +12422,7 @@
 		<?php elseif ($week_4 == "水"): ?>
 			<?php
 				$sql_3 = "SELECT * FROM masters where day = '$ymd_4' AND time1 = '16:30~17:00' AND doctor = 'C医師'";
-				$stmt_3 = $db->query($sql_3);
+				$stmt_3 = $dbh->query($sql_3);
 				$stmt_3->execute();
 				$count_3 = $stmt_3->rowCount();
 			?>
@@ -12445,7 +12445,7 @@
 		<?php if ($week_5 == "月" OR $week_5 == "火" OR $week_5 == "木" OR $week_5 == "金"): ?>
 			<?php
 				$sql_0 = "SELECT * FROM masters where day = '$ymd_5' AND time1 = '16:30~17:00' AND doctor = 'A医師'";
-				$stmt_0 = $db->query($sql_0);
+				$stmt_0 = $dbh->query($sql_0);
 				$stmt_0->execute();
 				$count_0 = $stmt_0->rowCount();
 			?>
@@ -12464,7 +12464,7 @@
 		<?php elseif ($week_5 == "水"): ?>
 			<?php
 				$sql_3 = "SELECT * FROM masters where day = '$ymd_5' AND time1 = '16:30~17:00' AND doctor = 'C医師'";
-				$stmt_3 = $db->query($sql_3);
+				$stmt_3 = $dbh->query($sql_3);
 				$stmt_3->execute();
 				$count_3 = $stmt_3->rowCount();
 			?>
@@ -12487,7 +12487,7 @@
 		<?php if ($week_6 == "月" OR $week_6 == "火" OR $week_6 == "木" OR $week_6 == "金"): ?>
 			<?php
 				$sql_0 = "SELECT * FROM masters where day = '$ymd_0' AND time1 = '16:30~17:00' AND doctor = 'A医師'";
-				$stmt_0 = $db->query($sql_0);
+				$stmt_0 = $dbh->query($sql_0);
 				$stmt_0->execute();
 				$count_0 = $stmt_0->rowCount();
 			?>
@@ -12506,7 +12506,7 @@
 		<?php elseif ($week_6 == "水"): ?>
 			<?php
 				$sql_3 = "SELECT * FROM masters where day = '$ymd_6' AND time1 = '16:30~17:00' AND doctor = 'C医師'";
-				$stmt_3 = $db->query($sql_3);
+				$stmt_3 = $dbh->query($sql_3);
 				$stmt_3->execute();
 				$count_3 = $stmt_3->rowCount();
 			?>
@@ -12529,7 +12529,7 @@
 		<?php if ($week_7 == "月" OR $week_7 == "火" OR $week_7 == "木" OR $week_7 == "金"): ?>
 			<?php
 				$sql_0 = "SELECT * FROM masters where day = '$ymd_7' AND time1 = '16:30~17:00' AND doctor = 'A医師'";
-				$stmt_0 = $db->query($sql_0);
+				$stmt_0 = $dbh->query($sql_0);
 				$stmt_0->execute();
 				$count_0 = $stmt_0->rowCount();
 			?>
@@ -12548,7 +12548,7 @@
 		<?php elseif ($week_7 == "水"): ?>
 			<?php
 				$sql_3 = "SELECT * FROM masters where day = '$ymd_7' AND time1 = '16:30~17:00' AND doctor = 'C医師'";
-				$stmt_3 = $db->query($sql_3);
+				$stmt_3 = $dbh->query($sql_3);
 				$stmt_3->execute();
 				$count_3 = $stmt_3->rowCount();
 			?>
