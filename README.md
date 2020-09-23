@@ -11,6 +11,11 @@
 予約を削除することも可能です。
 
 # デモ
+https://yoyaku2.herokuapp.com/reservation.php
+テストユーザー名　テスト
+メールアドレス　test@test
+パスワード　test
+
 画像
 
 <img src="https://user-images.githubusercontent.com/61407102/93898075-c9402000-fd2d-11ea-8391-cd84bb7ae7d2.gif" width="320px">
