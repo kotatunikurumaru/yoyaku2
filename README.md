@@ -12,9 +12,9 @@
 
 # デモ
 https://yoyaku2.herokuapp.com/reservation.php<br>
-テストユーザー名　テスト
-メールアドレス　test@test
-パスワード　test
+テストユーザー名　テスト<br>
+メールアドレス　test@test<br>
+パスワード　test<br>
 
 画像
 
