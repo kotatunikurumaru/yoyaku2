@@ -11,7 +11,7 @@
 予約を削除することも可能です。
 
 # デモ
-https://yoyaku2.herokuapp.com/reservation.php
+https://yoyaku2.herokuapp.com/reservation.php<br>
 テストユーザー名　テスト
 メールアドレス　test@test
 パスワード　test
