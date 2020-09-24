@@ -46,9 +46,15 @@ PHP、Heroku
 |time1|varchar(41)|null: false|
 |doctor|varchar(41)|null: false|
 
+#### Association
+- belongs_to :member
+
 ### membersテーブル
 |Column|Type|Options|
 |------|----|-------|
 |name|varchar(255)|null: false|
 |email|varchar(255)|null: false|
 |password|varchar(100)|null: false|
+
+#### Association
+- has_many :master
