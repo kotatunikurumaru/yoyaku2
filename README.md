@@ -41,10 +41,13 @@ PHP、Heroku
 ### mastersテーブル
 |Column|Type|Options|
 |------|----|-------|
+|id|int(11)|null: false|
 |member_id|int(11)|null: false|
 |day|varchar(255)|null: false|
 |time1|varchar(41)|null: false|
 |doctor|varchar(41)|null: false|
+|created|datetime|null: false|
+|modified|timestamp|null: false|
 
 #### Association
 - belongs_to :member
@@ -52,9 +55,12 @@ PHP、Heroku
 ### membersテーブル
 |Column|Type|Options|
 |------|----|-------|
+|id|int(11)|null: false|
 |name|varchar(255)|null: false|
 |email|varchar(255)|null: false|
 |password|varchar(100)|null: false|
+|created|datetime|null: false|
+|modified|timestamp|null: false|
 
 #### Association
 - has_many :master
