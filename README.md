@@ -42,7 +42,7 @@ PHP、Heroku
 |Column|Type|Options|
 |------|----|-------|
 |id|int(11)|null: false|
-|member_id|int(11)|null: false|
+|member_id|int(11)|null: false, auto_increment|
 |day|varchar(255)|null: false|
 |time1|varchar(41)|null: false|
 |doctor|varchar(41)|null: false|
@@ -55,7 +55,7 @@ PHP、Heroku
 ### membersテーブル
 |Column|Type|Options|
 |------|----|-------|
-|id|int(11)|null: false|
+|id|int(11)|null: false, auto_increment|
 |name|varchar(255)|null: false|
 |email|varchar(255)|null: false|
 |password|varchar(100)|null: false|
