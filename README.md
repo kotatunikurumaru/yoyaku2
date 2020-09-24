@@ -27,7 +27,7 @@ https://gyazo.com/cfac82463b061172c390492cdd67105d
 勤務先の診療所で予約システムがなかったため、自分自身の勉強もかねて作成しました。
 
 ## 使用技術
-PHP、Heroku
+PHP、MAMP、phpmyadmin、Heroku
 
 ## 工夫した点
 予約をとるまでのステップをなるべく少なくして、
