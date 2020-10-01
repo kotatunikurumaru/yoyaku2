@@ -7218,6 +7218,7 @@
 	?>
 	
 	<p><?php print(htmlspecialchars($member['name'], ENT_QUOTES)); ?>様  <a href="logout.php">ログアウト</a></p>
+	<p>予約一覧</p>
 	<?php foreach ($posts as $post): ?>
 		<?php if ($_SESSION['id'] == $post['member_id']): ?>
 			<p>
