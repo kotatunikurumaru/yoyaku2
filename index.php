@@ -59,8 +59,7 @@ if (!empty($_POST)) {
         <dt>メールアドレス</dt>
         <dd>
           <input type="text" name="email" size="35" maxlength="255" value="<?php print(htmlspecialchars($email, ENT_QUOTES)); ?>" />
-          <p>テストメールアドレス</p>
-          <p>test@test</p>
+          <p>テストメールアドレス：test@test</p>
           <?php if ($error['login'] === 'blank'): ?>
             <p class="error">メールアドレスとパスワードをご記入ください</p>
           <?php endif; ?>
@@ -71,8 +70,7 @@ if (!empty($_POST)) {
         <dt>パスワード</dt>
         <dd>
           <input type="password" name="password" size="35" maxlength="255" value="<?php print(htmlspecialchars($_POST['password'], ENT_QUOTES)); ?>" />
-          <p>テストパスワード</p>
-          <p>test</p>
+          <p>テストパスワード：test</p>
         </dd>
         <dt>ログイン情報の記録</dt>
         <dd>
